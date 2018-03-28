@@ -19,17 +19,17 @@ Administrador do Sistema
 3. Manter Usuários 
 4. Manter Exames
 
-Administrador do Laboratório
+Gerente do Laboratório
 1. Editar Informações do Laboratório
 2. Manter Unidade
 3. Manter Colaboradores
 4. Atribuir Exames
 
-Colaborador do Laboratório
+Colaborador
 1. Editar Informações da Unidade
 2. Atribuir Exames
 
-Paciente
+Paciente (Usuário)
 1. Busca por exames
 
 ```
