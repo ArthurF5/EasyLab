@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./docs/Apoio ao Projeto/LogoEasyLab/logoAlternativa.png" width="40%" alt="Uma plataforma que promete modificar a forma de buscar laboratórios que realizam determinados exames">
+    <img src="./docs/Apoio ao Projeto/Imagens/LogoEasyLab/logoAlternativa.png" width="40%" alt="Uma plataforma que promete modificar a forma de buscar laboratórios que realizam determinados exames">
 </p>
 
 ## Site e Android APK
