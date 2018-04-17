@@ -1,0 +1,48 @@
+<ion-header>
+  <header [title]="'Cadastro'"></header>
+</ion-header>
+
+<ion-content padding>
+  <h1 text-center>
+    <ion-icon class="auth-icon" name="ios-person-add" color="primary"></ion-icon>
+  </h1>
+  <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+    <ion-item>
+      <ion-icon name="ios-person" item-left></ion-icon>
+      <ion-input type="text" placeholder="Nome" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-contacts" item-left></ion-icon>
+      <ion-input type="text" placeholder="Usuário" formControlName="username"></ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-icon name="ios-flask" item-left></ion-icon>
+        <ion-label>Convênio</ion-label>
+        <ion-select formControlName="convenio">
+          <ion-option *ngFor="let item of items">{{item}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-icon name="mail" item-left></ion-icon>
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="lock" item-left></ion-icon>
+      <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="lock" item-left></ion-icon>
+      <ion-input type="password" placeholder="Confirmar Senha" formControlName="confirmarSenha"></ion-input>
+    </ion-item>
+
+    <br>
+    <button ion-button full type="submit" [disabled]="cadastroForm.invalid">Cadastrar</button>
+  </form>
+</ion-content>
