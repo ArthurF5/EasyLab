@@ -1,3 +1,4 @@
+import { ExamesPage } from './../pages/exames/exames';
 import { BuscaExamesPage } from './../pages/busca-exames/busca-exames';
 import { LoginPage } from './../pages/login/login';
 import { CadastroPage } from './../pages/cadastro/cadastro';
@@ -19,6 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CadastroPage,
     LoginPage,
     BuscaExamesPage,
+    ExamesPage,
     HeaderComponent,
     HomePage,
     ListPage
@@ -34,6 +36,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     CadastroPage,
     LoginPage,
+    ExamesPage,
     BuscaExamesPage,
     HomePage,
     ListPage

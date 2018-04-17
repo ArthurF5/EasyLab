@@ -1,3 +1,4 @@
+import { ExamesPage } from './../pages/exames/exames';
 import { BuscaExamesPage } from './../pages/busca-exames/busca-exames';
 import { LoginPage } from './../pages/login/login';
 import { CadastroPage } from './../pages/cadastro/cadastro';
@@ -28,6 +29,7 @@ export class MyApp {
       { title: 'Login', component: LoginPage },
       { title: 'Cadastro', component: CadastroPage },
       { title: 'Buscar Exames', component: BuscaExamesPage },
+      { title: 'Exames', component: ExamesPage },
 //      { title: 'List', component: ListPage }
     ];
 
