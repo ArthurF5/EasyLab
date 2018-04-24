@@ -21,7 +21,7 @@ create table if not exists laboratorio(
 
 create table if not exists unidadeLaboratorio(
 	id_UnidadeLaboratorio int primary key auto_increment not null,
-    endereco varchar(100) not null,
+    logradouro varchar(100) not null,
     complemento varchar(50),
     numero varchar(6),
     id_Cidade int not null,
