@@ -21,6 +21,7 @@ create table if not exists laboratorio(
 
 create table if not exists unidadeLaboratorio(
 	id_UnidadeLaboratorio int primary key auto_increment not null,
+    nomeUnidade varchar(50) not null,
     logradouro varchar(100) not null,
     complemento varchar(50),
     numero varchar(6),
@@ -66,10 +67,7 @@ create table if not exists usuario(
 	id_Usuario int primary key auto_increment not null,
     usuario varchar(20) not null,
     email varchar(100) not null,
-    senha varchar(40) not null, 
-    id_Convenio int,
-    id_Laboratorio int,
-	id_Unidade int
+    senha varchar(40) not null
 )engine = innodb;
 
 create table if not exists permissaoPerfil(

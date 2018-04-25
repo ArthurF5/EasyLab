@@ -1,13 +1,14 @@
 package com.moliveiralucas.EasyLab.persistencia;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import com.moliveiralucas.EasyLab.connect.ConexaoMySQL;
+import com.moliveiralucas.EasyLab.model.Cidade;
 import com.moliveiralucas.EasyLab.model.Laboratorio;
 import com.moliveiralucas.EasyLab.model.UnidadeLaboratorio;
 
@@ -42,17 +43,24 @@ public class UnidadeLaboratorioPersist {
 		PreparedStatement mPreparedStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
 		String sql = "";
+//		if(!mUnidadeLaboratorio.getComplemento().equals("")) {
+//			
+//		}
+//		if(!mUnidadeLaboratorio.getNumero().equals("")) {
+//			
+//		}
 		try {
 			mStatement = mConnection.createStatement();
 			mResultSet = mStatement.executeQuery(sql);
 			if(!mResultSet.next()) {
-				sql = "INSERT INTO unidadeLaboratorio(logradouro, complemento, numero, id_Cidade, id_Laboratorio) VALUES(?, ?, ?, ?, ?)";
+				sql = "INSERT INTO unidadeLaboratorio(nomeUnidade, logradouro, complemento, numero, id_Cidade, id_Laboratorio) VALUES(?, ?, ?, ?, ?, ?)";
 				mPreparedStatement = mConnection.prepareStatement(sql);
-				mPreparedStatement.setString(1, mUnidadeLaboratorio.getLogradouro());
-				mPreparedStatement.setString(2, mUnidadeLaboratorio.getComplemento());
-				mPreparedStatement.setString(3, mUnidadeLaboratorio.getNumero());
-				mPreparedStatement.setInt(4, mUnidadeLaboratorio.getCidade().getId_Cidade());
-				mPreparedStatement.setInt(5, mUnidadeLaboratorio.getCidade().getEstado().getId_Estado());
+				mPreparedStatement.setString(1, mUnidadeLaboratorio.getNomeUnidade());
+				mPreparedStatement.setString(2, mUnidadeLaboratorio.getLogradouro());
+				mPreparedStatement.setString(3, mUnidadeLaboratorio.getComplemento());
+				mPreparedStatement.setString(4, mUnidadeLaboratorio.getNumero());
+				mPreparedStatement.setInt(5, mUnidadeLaboratorio.getCidade().getId_Cidade());
+				mPreparedStatement.setInt(6, mLaboratorio.getId_Laboratorio());
 				mPreparedStatement.executeQuery();
 				mPreparedStatement.close();
 				retorno = 1;
@@ -66,27 +74,118 @@ public class UnidadeLaboratorioPersist {
 		return retorno;
 	}
 	
-	public Integer alterar() {
+	public Integer alterar(UnidadeLaboratorio mUnidadeLaboratorio, Laboratorio mLaboratorio) {
 		Integer retorno = 0;
-		
+		mConexaoMySQL = new ConexaoMySQL();
+		Connection mConnection = null;
+		PreparedStatement mPreparedStatement = null;
+		mConnection = mConexaoMySQL.abreConexaoBD();
+//		if(!mUnidadeLaboratorio.getComplemento().equals("")) {
+//			
+//		}
+//		if(!mUnidadeLaboratorio.getNumero().equals("")) {
+//			
+//		}
+		try {
+			String sql = "UPDATE unidadeLaboratorio SET nomeUnidade = ?, logradouro = ?, complemento = ?, numero = ? WHERE id_UnidadeLaboratorio = ?";
+			mPreparedStatement = mConnection.prepareStatement(sql);
+			mPreparedStatement.setString(1, mUnidadeLaboratorio.getNomeUnidade());
+			mPreparedStatement.setString(2, mUnidadeLaboratorio.getLogradouro());
+			mPreparedStatement.setString(3, mUnidadeLaboratorio.getComplemento());
+			mPreparedStatement.setString(4, mUnidadeLaboratorio.getNumero());
+			mPreparedStatement.setInt(5, mUnidadeLaboratorio.getId_UnidadeLaboratorio());
+			mPreparedStatement.executeQuery();
+			mPreparedStatement.close();
+			retorno = 1;
+		}catch(SQLException sqle) {
+			System.out.println(""+sqle.getMessage());
+			retorno = 3;
+		}
 		return retorno;
 	}
 	
-	public Integer excluir() {
+	public Integer excluir(UnidadeLaboratorio mUnidadeLaboratorio) {
 		Integer retorno = 0;
-		
+		mConexaoMySQL = new ConexaoMySQL();
+		Connection mConnection = null;
+		PreparedStatement mPreparedStatement = null;
+		mConnection = mConexaoMySQL.abreConexaoBD();
+		try {
+			String sql = "DELETE FROM unidadeLaboratorio WHERE id_UnidadeLaboratorio = ?";
+			mPreparedStatement = mConnection.prepareStatement(sql);
+			mPreparedStatement.setInt(1, mUnidadeLaboratorio.getId_UnidadeLaboratorio());
+			mPreparedStatement.execute();
+			mPreparedStatement.close();
+			retorno = 1;
+		}catch(SQLException sqle) {
+			System.out.println(""+sqle.getMessage());
+			retorno = 3;
+		}
 		return retorno;
 	}
 	
-	public UnidadeLaboratorio consultar() {
-		UnidadeLaboratorio mUnidadeLaboratorio = null;
-		
+	public UnidadeLaboratorio consultar(String parametroBusca) {
+		UnidadeLaboratorio mUnidadeLaboratorio = new UnidadeLaboratorio();
+		mConexaoMySQL = new ConexaoMySQL();
+		Connection mConnection = null;
+		ResultSet mResultSet = null;
+		Statement mStatement= null;
+		mConnection = mConexaoMySQL.abreConexaoBD();
+		String sql = "SELECT * FROM unidadeLaboratorio WHERE nomeUnidade = '"+parametroBusca+"%' ORDER BY nomeUnidade";
+		try {
+			mStatement = mConnection.createStatement();
+			mResultSet = mStatement.executeQuery(sql);
+			if(mResultSet.next()) {
+				mUnidadeLaboratorio.setId_UnidadeLaboratorio(mResultSet.getInt(""));
+				mUnidadeLaboratorio.setNomeUnidade(mResultSet.getString(""));
+				mUnidadeLaboratorio.setLogradouro(mResultSet.getString(""));
+				mUnidadeLaboratorio.setComplemento(mResultSet.getString(""));
+				mUnidadeLaboratorio.setNumero(mResultSet.getString(""));
+				
+				Cidade mCidade = new Cidade();
+				mCidade.setId_Cidade(mResultSet.getInt(""));
+				mUnidadeLaboratorio.setCidade(mCidade);
+				
+			}else {
+				mUnidadeLaboratorio = null;
+			}
+		}catch(SQLException sqle) {
+			System.out.println(""+sqle.getMessage());
+			mUnidadeLaboratorio = null;
+		}
 		return mUnidadeLaboratorio;
 	}
 	
-	public ArrayList<UnidadeLaboratorio> listarTodos(){
+	public ArrayList<UnidadeLaboratorio> listarTodos(String parametroBusca){
 		ArrayList<UnidadeLaboratorio> listaUnidades = new ArrayList<UnidadeLaboratorio>();
-		
+		UnidadeLaboratorio mUnidadeLaboratorio;
+		mConexaoMySQL = new ConexaoMySQL();
+		Connection mConnection = null;
+		ResultSet mResultSet = null;
+		Statement mStatement = null;
+		mConnection = mConexaoMySQL.abreConexaoBD();
+		String sql = "SELECT * FROM unidadeLaboratorio WHERE nomeLaboratorio = '"+parametroBusca+"%' ORDER BY nomeLaboratorio";
+		try {
+			mStatement = mConnection.createStatement();
+			mResultSet = mStatement.executeQuery(sql);
+			while(mResultSet.next()) {
+				mUnidadeLaboratorio = new UnidadeLaboratorio();
+				mUnidadeLaboratorio.setId_UnidadeLaboratorio(mResultSet.getInt(""));
+				mUnidadeLaboratorio.setNomeUnidade(mResultSet.getString(""));
+				mUnidadeLaboratorio.setLogradouro(mResultSet.getString(""));
+				mUnidadeLaboratorio.setComplemento(mResultSet.getString(""));
+				mUnidadeLaboratorio.setNumero(mResultSet.getString(""));
+				
+				Cidade mCidade = new Cidade();
+				mCidade.setId_Cidade(mResultSet.getInt(""));
+				mUnidadeLaboratorio.setCidade(mCidade);
+				
+				listaUnidades.add(mUnidadeLaboratorio);
+			}
+		}catch(SQLException sqle) {
+			System.out.println(""+sqle.getMessage());
+			listaUnidades = null;
+		}
 		return listaUnidades;
 	}
 	

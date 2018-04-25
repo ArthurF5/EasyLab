@@ -2,10 +2,12 @@ package com.moliveiralucas.EasyLab.model;
 
 public class UnidadeLaboratorio {
 	private Integer id_UnidadeLaboratorio;
+	private String nomeUnidade;
 	private String logradouro;
 	private String complemento;
 	private String numero;
 	private Cidade cidade;
+	
 	public Integer getId_UnidadeLaboratorio() {
 		return id_UnidadeLaboratorio;
 	}
@@ -35,5 +37,11 @@ public class UnidadeLaboratorio {
 	}
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
+	}
+	public String getNomeUnidade() {
+		return nomeUnidade;
+	}
+	public void setNomeUnidade(String nomeUnidade) {
+		this.nomeUnidade = nomeUnidade;
 	}
 }
