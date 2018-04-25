@@ -136,15 +136,19 @@ public class UnidadeLaboratorioPersist {
 			mStatement = mConnection.createStatement();
 			mResultSet = mStatement.executeQuery(sql);
 			if(mResultSet.next()) {
-				mUnidadeLaboratorio.setId_UnidadeLaboratorio(mResultSet.getInt(""));
-				mUnidadeLaboratorio.setNomeUnidade(mResultSet.getString(""));
-				mUnidadeLaboratorio.setLogradouro(mResultSet.getString(""));
-				mUnidadeLaboratorio.setComplemento(mResultSet.getString(""));
-				mUnidadeLaboratorio.setNumero(mResultSet.getString(""));
+				mUnidadeLaboratorio.setId_UnidadeLaboratorio(mResultSet.getInt("id_UnidadeLaboratorio"));
+				mUnidadeLaboratorio.setNomeUnidade(mResultSet.getString("nomeUnidade"));
+				mUnidadeLaboratorio.setLogradouro(mResultSet.getString("logradouro"));
+				mUnidadeLaboratorio.setComplemento(mResultSet.getString("complemento"));
+				mUnidadeLaboratorio.setNumero(mResultSet.getString("numero"));
 				
 				Cidade mCidade = new Cidade();
-				mCidade.setId_Cidade(mResultSet.getInt(""));
+				mCidade.setId_Cidade(mResultSet.getInt("id_Cidade"));
 				mUnidadeLaboratorio.setCidade(mCidade);
+				
+				Laboratorio mLaboratorio = new Laboratorio();
+				mLaboratorio.setId_Laboratorio(mResultSet.getInt("id_Laboratorio"));
+				mUnidadeLaboratorio.setLaboratorio(mLaboratorio);
 				
 			}else {
 				mUnidadeLaboratorio = null;
@@ -179,6 +183,10 @@ public class UnidadeLaboratorioPersist {
 				Cidade mCidade = new Cidade();
 				mCidade.setId_Cidade(mResultSet.getInt(""));
 				mUnidadeLaboratorio.setCidade(mCidade);
+				
+				Laboratorio mLaboratorio = new Laboratorio();
+				mLaboratorio.setId_Laboratorio(mResultSet.getInt("id_Laboratorio"));
+				mUnidadeLaboratorio.setLaboratorio(mLaboratorio);
 				
 				listaUnidades.add(mUnidadeLaboratorio);
 			}

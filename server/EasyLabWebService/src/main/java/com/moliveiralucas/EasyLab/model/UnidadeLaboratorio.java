@@ -7,6 +7,7 @@ public class UnidadeLaboratorio {
 	private String complemento;
 	private String numero;
 	private Cidade cidade;
+	private Laboratorio laboratorio;
 	
 	public Integer getId_UnidadeLaboratorio() {
 		return id_UnidadeLaboratorio;
@@ -43,5 +44,11 @@ public class UnidadeLaboratorio {
 	}
 	public void setNomeUnidade(String nomeUnidade) {
 		this.nomeUnidade = nomeUnidade;
+	}
+	public Laboratorio getLaboratorio() {
+		return laboratorio;
+	}
+	public void setLaboratorio(Laboratorio laboratorio) {
+		this.laboratorio = laboratorio;
 	}
 }
