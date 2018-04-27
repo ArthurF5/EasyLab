@@ -134,7 +134,7 @@ public class PerfilUsuarioPersist {
 		mConnection = mConexaoMySQL.abreConexaoBD();
 		String sql = "SELECT * FROM perfilUsuario ";
 		if(!parametroBusca.equals("")) {
-			sql += "WHERE perfilUsuario = '"+parametroBusca+"' ";
+			sql += "WHERE perfilUsuario LIKE '"+parametroBusca+"%' ";
 		}
 		sql += "ORDER BY parametroBusca";
 		try {
