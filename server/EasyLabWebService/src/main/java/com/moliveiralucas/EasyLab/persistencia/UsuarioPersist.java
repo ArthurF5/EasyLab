@@ -140,7 +140,7 @@ public class UsuarioPersist {
 		ResultSet mResultSet = null;
 		Statement mStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
-		String sql = "SELECT * FROM usuario WHERE usuario = '"+parametroBusca+"%' ORDER BY usuario";
+		String sql = "SELECT * FROM usuario WHERE usuario LIKE '"+parametroBusca+"%' ORDER BY usuario";
 		try {
 			mStatement = mConnection.createStatement();
 			mResultSet = mStatement.executeQuery(sql);

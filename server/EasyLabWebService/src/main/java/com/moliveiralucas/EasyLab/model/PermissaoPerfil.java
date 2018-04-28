@@ -3,15 +3,10 @@ package com.moliveiralucas.EasyLab.model;
 import java.util.ArrayList;
 
 public class PermissaoPerfil {
-	private Integer permissaoPerfil;
+	private Integer id_permissaoPerfil;
 	private ArrayList<Permissao> permissoes;
 	private PerfilUsuario perfilUsuario;
-	public Integer getPermissaoPerfil() {
-		return permissaoPerfil;
-	}
-	public void setPermissaoPerfil(Integer permissaoPerfil) {
-		this.permissaoPerfil = permissaoPerfil;
-	}
+
 	public ArrayList<Permissao> getPermissoes() {
 		return permissoes;
 	}
@@ -23,5 +18,11 @@ public class PermissaoPerfil {
 	}
 	public void setPerfilUsuario(PerfilUsuario perfilUsuario) {
 		this.perfilUsuario = perfilUsuario;
+	}
+	public Integer getId_permissaoPerfil() {
+		return id_permissaoPerfil;
+	}
+	public void setId_permissaoPerfil(Integer id_permissaoPerfil) {
+		this.id_permissaoPerfil = id_permissaoPerfil;
 	}
 }
