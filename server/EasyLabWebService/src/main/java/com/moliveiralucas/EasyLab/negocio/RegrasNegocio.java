@@ -1,9 +1,16 @@
 package com.moliveiralucas.EasyLab.negocio;
 
 
+import com.moliveiralucas.EasyLab.model.Cidade;
+import com.moliveiralucas.EasyLab.model.Convenio;
+import com.moliveiralucas.EasyLab.model.Estado;
+import com.moliveiralucas.EasyLab.model.Exame;
+import com.moliveiralucas.EasyLab.model.ExameUnidade;
+import com.moliveiralucas.EasyLab.model.Laboratorio;
 import com.moliveiralucas.EasyLab.model.PerfilUsuario;
 import com.moliveiralucas.EasyLab.model.Permissao;
 import com.moliveiralucas.EasyLab.model.PermissaoPerfil;
+import com.moliveiralucas.EasyLab.model.UnidadeLaboratorio;
 import com.moliveiralucas.EasyLab.model.Usuario;
 import com.moliveiralucas.EasyLab.model.UsuarioPerfil;
 import com.moliveiralucas.EasyLab.persistencia.CidadePersist;
@@ -30,32 +37,112 @@ public class RegrasNegocio {
 
 	/*Usuario*/
 	
-	public Usuario consultarUsuario() {
-		return null;
+	public Integer cadastrarUsuario(Usuario mUsuario) {
+		Integer codRetorno = 0;
+		return codRetorno;
 	}
 	
-	/*PerfilUsuario*/
+	public Usuario consultarUsuario(String parametroConsulta) {
+		Usuario mUsuario = null;
+		return mUsuario;
+	}
 	
-	public PerfilUsuario consultarPerfilUsuario() {
-		return null;
+	public Integer alterarUsuario(Usuario mUsuario) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirUsuario(Usuario mUsuario) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	/*Perfil de Usuario*/
+	
+	public Integer cadastrarPerfilUsuario(PerfilUsuario mPerfilUsuario) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public PerfilUsuario consultarPerfilUsuario(String parametroConsulta) {
+		PerfilUsuario mPerfilUsuario = null;
+		return mPerfilUsuario;
+	}
+	
+	public Integer alterarPerfilUsuario(PerfilUsuario mPerfilUsuario) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirPerfilUsuario(PerfilUsuario mPerfilUsuario) {
+		Integer codRetorno = 0;
+		return codRetorno;
 	}
 	
 	/*Permissao*/
 	
-	public Permissao consultarPermissao() {
-		return null;
+	public Integer cadastrarPermissao(Permissao mPermissao) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Permissao consultarPermissao(String parametroConsulta) {
+		Permissao mPermissao = null;
+		return mPermissao;
+	}
+	
+	public Integer alterarPermissao(Permissao mPermissao) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirPermissao(Permissao mPermissao) {
+		Integer codRetorno = 0;
+		return codRetorno;
 	}
 	
 	/*Relacionamento Usuario - Perfil*/
 	
-	public UsuarioPerfil consultarUsuarioPerfil() {
-		return null;
+	public Integer cadastrarUsuarioPerfil(UsuarioPerfil mUsuarioPerfil) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public UsuarioPerfil consultarUsuarioPerfil(String parametroConsulta) {
+		UsuarioPerfil mUsuarioPerfil = null;
+		return mUsuarioPerfil;
+	}
+	
+	public Integer alterarUsuarioPerfil(UsuarioPerfil mUsuarioPerfil) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirUsuarioPerfil(UsuarioPerfil mUsuarioPerfil) {
+		Integer codRetorno = 0;
+		return codRetorno;
 	}
 	
 	/*Relacionamento Permissao - Perfil*/
 	
-	public PermissaoPerfil consultarPermissaoPerfil() {
-		return null;
+	public Integer cadastrarPermissaoPerfil(PermissaoPerfil mPermissaoPerfil) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public PermissaoPerfil consultarPermissaoPerfil(String parametroConsulta) {
+		PermissaoPerfil mPermissaoPerfil = null;
+		return mPermissaoPerfil;
+	}
+	
+	public Integer alterarPermissaoPerfil(PermissaoPerfil mPermissaoPerfil) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirPermissaoPerfil(PermissaoPerfil mPermissaoPerfil) {
+		Integer codRetorno = 0;
+		return codRetorno;
 	}
 	
 	/*SISTEMA*/
@@ -66,4 +153,159 @@ public class RegrasNegocio {
 	ExameUnidadePersist mExameUnidadePersist;
 	LaboratorioPersist mLaboratorioPersist;
 	UnidadeLaboratorioPersist mUnidadeLaboratorioPersist;
+	
+	/*Cidade*/
+	
+	public Integer cadastrarCidade(Cidade mCidade) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Cidade consultarCidade(String parametroConsulta) {
+		Cidade mCidade = null;
+		return mCidade;
+	}
+	
+	public Integer alterarCidade(Cidade mCidade) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirCidade(Cidade mCidade) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	/*Convenio*/
+	
+	public Integer cadastrarConvenio(Convenio mConvenio) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Convenio consultarConvenio(String parametroConsulta) {
+		Convenio mConvenio = null;
+		return mConvenio;
+	}
+	
+	public Integer alterarConvenio(Convenio mConvenio) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirConvenio(Convenio mConvenio) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	/*Estado*/
+	
+	public Integer cadastrarEstado(Estado mEstado) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Estado consultarEstado(String parametroConsulta) {
+		Estado mEstado = null;
+		return mEstado;
+	}
+	
+	public Integer alterarEstado(Estado mEstado) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirEstado(Estado mEstado) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	/*Exame*/
+	
+	public Integer cadastrarExame(Exame mExame) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Exame consultarExame(String parametroConsulta) {
+		Exame mExame = null;
+		return mExame;
+	}
+	
+	public Integer alterarExame(Exame mExame) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirExame(Exame mExame) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	/*Exame realizados em uma Unidade*/
+	
+	public Integer cadastrarExameUnidade(ExameUnidade mExameUnidade) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public ExameUnidade consultarExameUnidade(String parametroConsulta) {
+		ExameUnidade mExameUnidade = null;
+		return mExameUnidade;
+	}
+	
+	public Integer alterarExameUnidade(ExameUnidade mExameUnidade) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirExameUnidade(ExameUnidade mExameUnidade) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	/*Laboratorio*/
+	
+	public Integer cadastrarLaboratorio(Laboratorio mLaboratorio) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Laboratorio consultarLaboratorio(String parametroConsulta) {
+		Laboratorio mLaboratorio = null;
+		return mLaboratorio;
+	}
+	
+	public Integer alterarLaboratorio(Laboratorio mLaboratorio) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirLaboratorio(Laboratorio mLaboratorio) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	/*Unidade de um Laboratorio*/
+
+	public Integer cadastrarUnidadeLaboratorio(UnidadeLaboratorio mUnidadeLaboratorio) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public UnidadeLaboratorio consultarUnidadeLaboratorio(String parametroConsulta) {
+		UnidadeLaboratorio mUnidadeLaboratorio = null;
+		return mUnidadeLaboratorio;
+	}
+	
+	public Integer alterarUnidadeLaboratorio(UnidadeLaboratorio mUnidadeLaboratorio) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+	
+	public Integer excluirUnidadeLaboratorio(UnidadeLaboratorio mUnidadeLaboratorio) {
+		Integer codRetorno = 0;
+		return codRetorno;
+	}
+
 }

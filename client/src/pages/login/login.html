@@ -9,7 +9,7 @@
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
     <ion-item>
       <ion-icon name="ios-contacts" item-left></ion-icon>
-      <ion-input type="text" placeholder="Nome" formControlName="username"></ion-input>
+      <ion-input type="text" placeholder="Usuario" formControlName="username"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -18,6 +18,6 @@
     </ion-item>
 
     <br>
-    <button ion-button full type="submit" [disabled]="loginForm.invalid">Cadastrar</button>
+    <button ion-button full type="submit" [disabled]="loginForm.invalid">Entrar</button>
   </form>
 </ion-content>
