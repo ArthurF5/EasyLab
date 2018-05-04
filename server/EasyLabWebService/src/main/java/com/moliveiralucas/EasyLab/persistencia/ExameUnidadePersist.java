@@ -56,7 +56,7 @@ public class ExameUnidadePersist {
 				mPreparedStatement.setInt(2, mExameUnidade.getUnidadeLaboratorio().getId_UnidadeLaboratorio());
 				mPreparedStatement.setInt(3, mExameUnidade.getConvenio().getId_Convenio());
 				mPreparedStatement.setDouble(4, mExameUnidade.getValor());
-				mPreparedStatement.executeQuery();
+				mPreparedStatement.executeUpdate();
 				mPreparedStatement.close();
 				retorno = 1;
 			}else {

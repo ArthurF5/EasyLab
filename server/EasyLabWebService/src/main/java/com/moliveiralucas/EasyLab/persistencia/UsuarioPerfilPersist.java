@@ -32,7 +32,7 @@ public class UsuarioPerfilPersist {
 				mPreparedStatement = mConnection.prepareStatement(sql);
 				mPreparedStatement.setInt(1, mUsuarioPerfil.getPerfilUsuario().getId_PerfilUsuario());
 				mPreparedStatement.setInt(2, mUsuarioPerfil.getUsuario().getId_Usuario());
-				mPreparedStatement.executeQuery();
+				mPreparedStatement.executeUpdate();
 				mPreparedStatement.close();
 				retorno = 1;
 			}else {

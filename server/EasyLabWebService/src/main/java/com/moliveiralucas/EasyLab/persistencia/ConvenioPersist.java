@@ -49,7 +49,7 @@ public class ConvenioPersist {
 				sql = "INSERT INTO convenio(convenio) VALUES(?)";
 				mPreparedStatement = mConnection.prepareStatement(sql);
 				mPreparedStatement.setString(1, convenio.getConvenio());
-				mPreparedStatement.executeQuery();
+				mPreparedStatement.executeUpdate();
 				mPreparedStatement.close();
 				retorno = 1;
 			}else {

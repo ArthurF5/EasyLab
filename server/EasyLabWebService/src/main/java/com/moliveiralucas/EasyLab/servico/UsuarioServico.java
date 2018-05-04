@@ -1,42 +1,56 @@
 package com.moliveiralucas.EasyLab.servico;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.moliveiralucas.EasyLab.model.Usuario;
 import com.moliveiralucas.EasyLab.negocio.UsuarioNegocio;
 
-@Controller
+@RestController
+@RequestMapping("/usuario")
 public class UsuarioServico {
 
 	UsuarioNegocio mUsuarioNegocio = new UsuarioNegocio();
 	Gson mGson = new Gson();
-	
-	@ModelAttribute("usuario")
-	public Usuario initialize() {
-		return new Usuario();
-	}
-	
-	@RequestMapping(value = "/cadastrarUsuario", method = RequestMethod.POST)
-	public String cadastrarUsuario(@ModelAttribute(value="mUsuario") Usuario mUsuario) {
+
+	@RequestMapping(value = "/cadastrarUsuario/{usuario}_{senha}_{email}", 
+			method = RequestMethod.GET, 
+			produces = "application/json;charset=UTF-8")
+	public @ResponseBody String cadastrarUsuario(@PathVariable String usuario, @PathVariable String senha, @PathVariable String email) {
+		Usuario mUsuario = new Usuario();
+		mUsuario.setUsuario(usuario);
+		mUsuario.setSenha(senha);
+		mUsuario.setEmail(email);
 		return mGson.toJson(mUsuarioNegocio.cadastrarUsuario(mUsuario));
 	}
 	
-	@RequestMapping(value = "/consultarUsuario", method = RequestMethod.POST)
-	public String consultarUsuario(@RequestParam(value="mUsuario")Usuario mUsuario) {
-		return mGson.toJson(mUsuarioNegocio.consultarUsuario(mUsuario.getUsuario()));
+	@RequestMapping(value = "/teste/{teste}")
+	public @ResponseBody String teste(@PathVariable String teste) {
+		return teste;
 	}
 	
-	@RequestMapping(value = "/alterarUsuario", method = RequestMethod.POST)
+	@RequestMapping(value = "/consultarUsuario/{parametroBusca}", 
+			method = RequestMethod.GET, 
+			produces = "application/json;charset=UTF-8")
+	public @ResponseBody String consultarUsuario(@PathVariable String parametroBusca) {
+		return mGson.toJson(mUsuarioNegocio.consultarUsuario(parametroBusca));
+	}
+	
+	@RequestMapping(value = "/alterarUsuario", 
+			method = RequestMethod.GET, 
+			produces = "application/json;charset=UTF-8")
 	public String alterarUsuario(@RequestParam(value="mUsuario")Usuario mUsuario) {
 		return mGson.toJson(mUsuarioNegocio.alterarUsuario(mUsuario));
 	}
 	
-	@RequestMapping(value = "/excluirUsuario", method = RequestMethod.POST)
+	@RequestMapping(value = "/excluirUsuario", 
+			method = RequestMethod.GET, 
+			produces = "application/json;charset=UTF-8")
 	public String excluirUsuario(@RequestParam(value="mUsuario")Usuario mUsuario) {
 		return mGson.toJson(mUsuarioNegocio.excluirUsuario(mUsuario));
 	}

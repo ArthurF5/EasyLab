@@ -49,7 +49,7 @@ public class PerfilUsuarioPersist {
 				sql = "INSERT INTO perfilUsuario(perfilUsuario) VALUES(?)";
 				mPreparedStatement = mConnection.prepareStatement(sql);
 				mPreparedStatement.setString(1, mPerfilUsuario.getPerfilDeUsuario());
-				mPreparedStatement.executeQuery();
+				mPreparedStatement.executeUpdate();
 				mPreparedStatement.close();
 				retorno = 1;
 			}else {

@@ -51,9 +51,8 @@ public class UsuarioPersist {
 				mPreparedStatement = mConnection.prepareStatement(sql);
 				mPreparedStatement.setString(1, usuario.getUsuario());
 				mPreparedStatement.setString(2, usuario.getEmail());
-				String password = Util.toSHA1(usuario.getUsuario() + usuario.getSenha());
-				mPreparedStatement.setString(3, password);
-				mPreparedStatement.executeQuery();
+				mPreparedStatement.setString(3, usuario.getSenha());
+				mPreparedStatement.executeUpdate();
 				mPreparedStatement.close();
 				retorno = 1;
 			}else {

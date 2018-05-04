@@ -61,7 +61,7 @@ public class UnidadeLaboratorioPersist {
 				mPreparedStatement.setString(4, mUnidadeLaboratorio.getNumero());
 				mPreparedStatement.setInt(5, mUnidadeLaboratorio.getCidade().getId_Cidade());
 				mPreparedStatement.setInt(6, mUnidadeLaboratorio.getLaboratorio().getId_Laboratorio());
-				mPreparedStatement.executeQuery();
+				mPreparedStatement.executeUpdate();
 				mPreparedStatement.close();
 				retorno = 1;
 			}else {

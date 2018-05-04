@@ -34,7 +34,7 @@ public class PermissaoPerfilPersist {
 					mPreparedStatement = mConnection.prepareStatement(sql);
 					mPreparedStatement.setInt(1, mPermissaoPerfil.getPermissoes().get(i).getId_Permissao());
 					mPreparedStatement.setInt(2, mPermissaoPerfil.getId_permissaoPerfil());
-					mPreparedStatement.executeQuery();
+					mPreparedStatement.executeUpdate();
 					mPreparedStatement.close();
 					retorno = 1;
 				}else {

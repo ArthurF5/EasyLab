@@ -2,6 +2,7 @@ package com.moliveiralucas.EasyLab.negocio;
 
 import com.moliveiralucas.EasyLab.model.Usuario;
 import com.moliveiralucas.EasyLab.persistencia.UsuarioPersist;
+import com.moliveiralucas.EasyLab.util.Util;
 
 public class UsuarioNegocio {
 
@@ -15,6 +16,11 @@ public class UsuarioNegocio {
 		Integer codRetorno = 0;
 		Integer retornoMetodo = 0;
 		if(mUsuario != null) {
+			
+			String senha = mUsuario.getUsuario() + mUsuario.getSenha();
+			senha = Util.toSHA1(senha);
+			mUsuario.setSenha(senha);
+			
 			retornoMetodo = mUsuarioPersist.cadastrar(mUsuario);
 			switch(retornoMetodo) {
 			case 1:

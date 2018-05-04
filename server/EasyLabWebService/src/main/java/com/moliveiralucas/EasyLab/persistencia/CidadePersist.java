@@ -49,7 +49,7 @@ public class CidadePersist {
 				mPreparedStatement = mConnection.prepareStatement(sql);
 				mPreparedStatement.setString(1, cidade.getCidade());
 				mPreparedStatement.setInt(2, cidade.getEstado().getId_Estado());
-				mPreparedStatement.executeQuery();
+				mPreparedStatement.executeUpdate();
 				mPreparedStatement.close();
 				retorno = 1;
 			}else {

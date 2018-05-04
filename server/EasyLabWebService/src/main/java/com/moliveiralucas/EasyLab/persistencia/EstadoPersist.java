@@ -50,7 +50,7 @@ public class EstadoPersist {
 				mPreparedStatement = mConnection.prepareStatement(sql);
 				mPreparedStatement.setString(1, estado.getUf());
 				mPreparedStatement.setString(2, estado.getEstado());
-				mPreparedStatement.executeQuery();
+				mPreparedStatement.executeUpdate();
 				mPreparedStatement.close();
 				retorno = 1;
 			} else {
