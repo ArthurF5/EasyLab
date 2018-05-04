@@ -1,14 +1,14 @@
 package com.moliveiralucas.EasyLab.model;
 
 public class UsuarioPerfil {
-	private Integer id_UsuaIioPerfil;
+	private Integer id_UsuarioPerfil;
 	private PerfilUsuario perfilUsuario;
 	private Usuario usuario;
-	public Integer getId_UsuaIioPerfil() {
-		return id_UsuaIioPerfil;
+	public Integer getId_UsuarioPerfil() {
+		return id_UsuarioPerfil;
 	}
-	public void setId_UsuaIioPerfil(Integer id_UsuaIioPerfil) {
-		this.id_UsuaIioPerfil = id_UsuaIioPerfil;
+	public void setId_UsuarioPerfil(Integer id_UsuaIioPerfil) {
+		this.id_UsuarioPerfil = id_UsuaIioPerfil;
 	}
 	public PerfilUsuario getPerfilUsuario() {
 		return perfilUsuario;

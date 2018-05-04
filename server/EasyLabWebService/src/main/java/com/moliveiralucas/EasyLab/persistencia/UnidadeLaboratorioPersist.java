@@ -14,14 +14,14 @@ import com.moliveiralucas.EasyLab.model.UnidadeLaboratorio;
 
 public class UnidadeLaboratorioPersist {
 	ConexaoMySQL mConexaoMySQL;
-	public Integer retornaID(UnidadeLaboratorio mUnidadeLaboratorio, Laboratorio mLaboratorio) {
+	public Integer retornaID(UnidadeLaboratorio mUnidadeLaboratorio) {
 		Integer retorno = 0;
 		mConexaoMySQL = new ConexaoMySQL();
 		Connection mConnection = null;
 		ResultSet mResultSet = null;
 		Statement mStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
-		String sql = "SELECT id_UnidadeLaboratorio FROM unidadeLaboratorio WHERE id_Laboratorio = "+mLaboratorio.getId_Laboratorio()+" AND endereco LIKE '"+mUnidadeLaboratorio.getLogradouro()+"'";
+		String sql = "SELECT id_UnidadeLaboratorio FROM unidadeLaboratorio WHERE id_Laboratorio = "+mUnidadeLaboratorio.getLaboratorio().getId_Laboratorio()+" AND endereco LIKE '"+mUnidadeLaboratorio.getLogradouro()+"'";
 		try {
 			mStatement = mConnection.createStatement();
 			mResultSet = mStatement.executeQuery(sql);
@@ -34,7 +34,7 @@ public class UnidadeLaboratorioPersist {
 		return retorno;
 	}
 	
-	public Integer cadastrar(UnidadeLaboratorio mUnidadeLaboratorio, Laboratorio mLaboratorio) {
+	public Integer cadastrar(UnidadeLaboratorio mUnidadeLaboratorio) {
 		Integer retorno = 0;
 		mConexaoMySQL = new ConexaoMySQL();
 		Connection mConnection = null;
@@ -42,7 +42,7 @@ public class UnidadeLaboratorioPersist {
 		Statement mStatement = null;
 		PreparedStatement mPreparedStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
-		String sql = "";
+		String sql = "SELECT * FROM unidadeLaboratorio WHERE nomeUnidade = '"+mUnidadeLaboratorio.getNomeUnidade()+"'";
 //		if(!mUnidadeLaboratorio.getComplemento().equals("")) {
 //			
 //		}
@@ -60,7 +60,7 @@ public class UnidadeLaboratorioPersist {
 				mPreparedStatement.setString(3, mUnidadeLaboratorio.getComplemento());
 				mPreparedStatement.setString(4, mUnidadeLaboratorio.getNumero());
 				mPreparedStatement.setInt(5, mUnidadeLaboratorio.getCidade().getId_Cidade());
-				mPreparedStatement.setInt(6, mLaboratorio.getId_Laboratorio());
+				mPreparedStatement.setInt(6, mUnidadeLaboratorio.getLaboratorio().getId_Laboratorio());
 				mPreparedStatement.executeQuery();
 				mPreparedStatement.close();
 				retorno = 1;
@@ -74,7 +74,7 @@ public class UnidadeLaboratorioPersist {
 		return retorno;
 	}
 	
-	public Integer alterar(UnidadeLaboratorio mUnidadeLaboratorio, Laboratorio mLaboratorio) {
+	public Integer alterar(UnidadeLaboratorio mUnidadeLaboratorio) {
 		Integer retorno = 0;
 		mConexaoMySQL = new ConexaoMySQL();
 		Connection mConnection = null;

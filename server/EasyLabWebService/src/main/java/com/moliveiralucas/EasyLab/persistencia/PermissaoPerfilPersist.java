@@ -14,7 +14,7 @@ import com.moliveiralucas.EasyLab.model.PermissaoPerfil;
 
 public class PermissaoPerfilPersist {
 	ConexaoMySQL mConexaoMySQL;
-	public Integer cadastrar(PerfilUsuario mPerfilUsuario, Permissao mPermissao) {
+	public Integer cadastrar(PermissaoPerfil mPermissaoPerfil) {
 		Integer retorno = 0;
 		mConexaoMySQL = new ConexaoMySQL();
 		Connection mConnection = null;
@@ -23,19 +23,23 @@ public class PermissaoPerfilPersist {
 		PreparedStatement mPreparedStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
 		try {
-			String sql = "SELECT * FROM permissaoPerfil WHERE id_Permissao = "+mPermissao.getId_Permissao()+" AND id_PerfilUsuario = "+mPerfilUsuario.getId_PerfilUsuario();
-			mStatement = mConnection.createStatement();
-			mResultSet = mStatement.executeQuery(sql);
-			if(!mResultSet.next()) {
-				sql = "INSERT INTO permissaoPerfil(id_Permissao, id_PerfilUsuario) VALUES(?, ?)";
-				mPreparedStatement = mConnection.prepareStatement(sql);
-				mPreparedStatement.setInt(1, mPerfilUsuario.getId_PerfilUsuario());
-				mPreparedStatement.setInt(2, mPermissao.getId_Permissao());
-				mPreparedStatement.executeQuery();
-				mPreparedStatement.close();
-				retorno = 1;
-			}else {
-				retorno = 2;
+			for(Integer i = 0; i<mPermissaoPerfil.getPermissoes().size();i++) {
+				String sql = "SELECT * FROM permissaoPerfil WHERE id_Permissao = "
+								+mPermissaoPerfil.getPermissoes().get(i).getId_Permissao()+" AND id_PerfilUsuario = "
+								+mPermissaoPerfil.getPerfilUsuario().getId_PerfilUsuario();
+				mStatement = mConnection.createStatement();
+				mResultSet = mStatement.executeQuery(sql);
+				if(!mResultSet.next()) {
+					sql = "INSERT INTO permissaoPerfil(id_Permissao, id_PerfilUsuario) VALUES(?, ?)";
+					mPreparedStatement = mConnection.prepareStatement(sql);
+					mPreparedStatement.setInt(1, mPermissaoPerfil.getPermissoes().get(i).getId_Permissao());
+					mPreparedStatement.setInt(2, mPermissaoPerfil.getId_permissaoPerfil());
+					mPreparedStatement.executeQuery();
+					mPreparedStatement.close();
+					retorno = 1;
+				}else {
+					retorno = 2;
+				}
 			}
 		}catch(SQLException sqle) {
 			System.out.println(""+sqle.getMessage());
