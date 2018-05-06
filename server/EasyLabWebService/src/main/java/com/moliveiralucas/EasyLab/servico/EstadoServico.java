@@ -19,7 +19,7 @@ public class EstadoServico {
 	@RequestMapping(value = "/cadastrarEstado/{estado}_{uf}", 
 			method = RequestMethod.GET, 
 			produces = "application/json;charset=UTF-8")
-	public @ResponseBody String cadastrarCidade(@PathVariable String estado, @PathVariable String uf) {
+	public @ResponseBody String cadastrarEstado(@PathVariable String estado, @PathVariable String uf) {
 		Estado mEstado = new Estado();
 		mEstado.setEstado(estado);
 		mEstado.setUf(uf);
