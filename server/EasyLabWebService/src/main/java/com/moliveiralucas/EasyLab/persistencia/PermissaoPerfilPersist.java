@@ -23,23 +23,19 @@ public class PermissaoPerfilPersist {
 		PreparedStatement mPreparedStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
 		try {
-			for(Integer i = 0; i<mPermissaoPerfil.getPermissoes().size();i++) {
-				String sql = "SELECT * FROM permissaoPerfil WHERE id_Permissao = "
-								+mPermissaoPerfil.getPermissoes().get(i).getId_Permissao()+" AND id_PerfilUsuario = "
-								+mPermissaoPerfil.getPerfilUsuario().getId_PerfilUsuario();
-				mStatement = mConnection.createStatement();
-				mResultSet = mStatement.executeQuery(sql);
-				if(!mResultSet.next()) {
-					sql = "INSERT INTO permissaoPerfil(id_Permissao, id_PerfilUsuario) VALUES(?, ?)";
-					mPreparedStatement = mConnection.prepareStatement(sql);
-					mPreparedStatement.setInt(1, mPermissaoPerfil.getPermissoes().get(i).getId_Permissao());
-					mPreparedStatement.setInt(2, mPermissaoPerfil.getId_permissaoPerfil());
-					mPreparedStatement.executeUpdate();
-					mPreparedStatement.close();
-					retorno = 1;
-				}else {
-					retorno = 2;
-				}
+			String sql = "SELECT * FROM permissaoPerfil WHERE id_Permissao = "+mPermissaoPerfil.getPermissao().getId_Permissao()+" AND id_PerfilUsuario = "+mPermissaoPerfil.getPerfilUsuario().getId_PerfilUsuario();
+			mStatement = mConnection.createStatement();
+			mResultSet = mStatement.executeQuery(sql);
+			if(!mResultSet.next()) {
+				sql = "INSERT INTO permissaoPerfil(id_Permissao, id_PerfilUsuario) VALUES(?, ?)";
+				mPreparedStatement = mConnection.prepareStatement(sql);
+				mPreparedStatement.setInt(1, mPermissaoPerfil.getPermissao().getId_Permissao());
+				mPreparedStatement.setInt(2, mPermissaoPerfil.getId_permissaoPerfil());
+				mPreparedStatement.executeUpdate();
+				mPreparedStatement.close();
+				retorno = 1;
+			}else {
+				retorno = 2;
 			}
 		}catch(SQLException sqle) {
 			System.out.println(""+sqle.getMessage());
@@ -47,19 +43,22 @@ public class PermissaoPerfilPersist {
 		return retorno;
 	}
 
-	public Integer excluir(Permissao mPermissao, PerfilUsuario mPerfilUsuario ) {
+	public Integer excluir(PermissaoPerfil mPermissaoPerfil) {
 		Integer retorno = 0;
 		mConexaoMySQL = new ConexaoMySQL();
 		Connection mConnection = null;
 		PreparedStatement mPreparedStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
 		try {
-			String sql = "DELETE FROM permissaoPerfil WHERE id_Permissao = ? AND id_PerfilUsuario = ?";
+			String sql = "DELETE FROM permissaoPerfil WHERE id_PermissaoPerfil = ?";
 			mPreparedStatement = mConnection.prepareStatement(sql);
-			mPreparedStatement.setInt(1, mPermissao.getId_Permissao());
-			mPreparedStatement.setInt(2, mPerfilUsuario.getId_PerfilUsuario());
+			mPreparedStatement.setInt(1, mPermissaoPerfil.getId_permissaoPerfil());
+			mPreparedStatement.executeQuery();
+			mPreparedStatement.close();
+			retorno = 1;
 		}catch(SQLException sqle) {
 			System.out.println(""+sqle.getMessage());
+			retorno = 3;
 		}
 		return retorno;
 	}

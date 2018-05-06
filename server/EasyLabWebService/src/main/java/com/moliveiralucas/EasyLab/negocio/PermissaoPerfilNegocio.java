@@ -36,32 +36,15 @@ public class PermissaoPerfilNegocio {
 		return codRetorno;
 	}
 
-	public PermissaoPerfil consultarPermissaoPerfil(PerfilUsuario mPerfilUsuario) {
+	public PermissaoPerfil listarPermissaoPerfil(PerfilUsuario mPerfilUsuario) {
 		return mPermissaoPerfilPersist.listarPermissoes(mPerfilUsuario);
-	}
-
-	public Integer alterarPermissaoPerfil(PermissaoPerfil mPermissaoPerfil) {
-		Integer codRetorno = 0;
-		Integer resultadoMetodo = 0;
-		if(mPermissaoPerfil != null) {
-			switch(resultadoMetodo) {
-			case 1:
-				codRetorno = 1;
-				break;
-			case 3:
-				codRetorno = 3;
-				break;
-			}
-		} else {
-			codRetorno = 4;
-		}
-		return codRetorno;
 	}
 
 	public Integer excluirPermissaoPerfil(PermissaoPerfil mPermissaoPerfil) {
 		Integer codRetorno = 0;
 		Integer resultadoMetodo = 0;
 		if(mPermissaoPerfil != null) {
+			resultadoMetodo = mPermissaoPerfilPersist.excluir(mPermissaoPerfil);
 			switch(resultadoMetodo) {
 			case 1:
 				codRetorno = 1;
