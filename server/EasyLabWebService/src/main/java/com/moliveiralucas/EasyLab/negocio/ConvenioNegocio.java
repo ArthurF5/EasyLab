@@ -4,7 +4,7 @@ import com.moliveiralucas.EasyLab.model.Convenio;
 import com.moliveiralucas.EasyLab.persistencia.ConvenioPersist;
 
 public class ConvenioNegocio {
-	ConvenioPersist mConvenioPersist;
+	ConvenioPersist mConvenioPersist = new ConvenioPersist();
 	
 	/* codRetorno:	1 - Cadastrado com sucesso!
 	 * 				2 - Já Possui registro cadastrado

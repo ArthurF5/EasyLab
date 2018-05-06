@@ -8,7 +8,7 @@ import com.moliveiralucas.EasyLab.persistencia.ExameUnidadePersist;
 
 public class ExameUnidadeNegocio {
 
-	ExameUnidadePersist mExameUnidadePersist;
+	ExameUnidadePersist mExameUnidadePersist = new ExameUnidadePersist();
 	
 	/* codRetorno:	1 - Cadastrado com sucesso!
 	 * 				2 - Já Possui registro cadastrado

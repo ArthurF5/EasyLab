@@ -5,7 +5,7 @@ import com.moliveiralucas.EasyLab.persistencia.UnidadeLaboratorioPersist;
 
 public class UnidadeLaboratorioNegocio {
 
-	UnidadeLaboratorioPersist mUnidadeLaboratorioPersist;
+	UnidadeLaboratorioPersist mUnidadeLaboratorioPersist = new UnidadeLaboratorioPersist();
 	
 	/* codRetorno:	1 - Cadastrado com sucesso!
 	 * 				2 - Já Possui registro cadastrado

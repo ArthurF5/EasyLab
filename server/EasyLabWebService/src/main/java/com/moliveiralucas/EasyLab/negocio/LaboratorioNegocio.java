@@ -5,7 +5,7 @@ import com.moliveiralucas.EasyLab.persistencia.LaboratorioPersist;
 
 public class LaboratorioNegocio {
 	
-	LaboratorioPersist mLaboratorioPersist;
+	LaboratorioPersist mLaboratorioPersist = new LaboratorioPersist();
 	/* codRetorno:	1 - Cadastrado com sucesso!
 	 * 				2 - Já Possui registro cadastrado
 	 * 				3 - Houve algum erro ao tentar executar a instrução
