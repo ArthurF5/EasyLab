@@ -5,7 +5,7 @@ import com.moliveiralucas.EasyLab.persistencia.EstadoPersist;
 
 public class EstadoNegocio {
 
-	EstadoPersist mEstadoPersist;
+	EstadoPersist mEstadoPersist = new EstadoPersist();
 	/* codRetorno:	1 - Cadastrado com sucesso!
 	 * 				2 - Já Possui registro cadastrado
 	 * 				3 - Houve algum erro ao tentar executar a instrução

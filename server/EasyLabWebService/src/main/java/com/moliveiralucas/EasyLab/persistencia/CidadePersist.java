@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import com.moliveiralucas.EasyLab.connect.ConexaoMySQL;
 import com.moliveiralucas.EasyLab.model.Cidade;
+import com.moliveiralucas.EasyLab.model.Estado;
 
 public class CidadePersist {
 	ConexaoMySQL mConexaoMySQL;
@@ -40,7 +41,7 @@ public class CidadePersist {
 		Statement mStatement = null;
 		PreparedStatement mPreparedStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
-		String sql = "SELECT * FROM cidade WHERE cidade LIKE '"+cidade.getCidade()+"' AND id_Estado = "+cidade.getEstado().getId_Estado();
+		String sql = "SELECT * FROM cidade WHERE cidade = '"+cidade.getCidade()+"' AND id_UF = "+cidade.getEstado().getId_Estado();
 		try {
 			mStatement = mConnection.createStatement();
 			mResultSet = mStatement.executeQuery(sql);
@@ -110,13 +111,16 @@ public class CidadePersist {
 		ResultSet mResultSet = null;
 		Statement mStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
-		String sql = "SELECT * FROM cidade WHERE cidade LIKE '"+parametroBusca+"'";
+		String sql = "SELECT * FROM cidade WHERE cidade LIKE '"+parametroBusca+"%'";
 		try {
 			mStatement = mConnection.createStatement();
 			mResultSet = mStatement.executeQuery(sql);
 			if(mResultSet.next()) {
 				cidade.setCidade(mResultSet.getString("cidade"));
-				cidade.setId_Cidade(mResultSet.getInt("cidadeID"));
+				Estado mEstado = new Estado();
+				mEstado.setId_Estado(mResultSet.getInt("id_UF"));
+				cidade.setEstado(mEstado);
+				cidade.setId_Cidade(mResultSet.getInt("id_Cidade"));
 			}else {
 				cidade = null;
 			}

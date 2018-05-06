@@ -41,12 +41,12 @@ public class EstadoPersist {
 		Statement mStatement = null;
 		PreparedStatement mPreparedStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
-		String sql = "SELECT * FROM uf WHERE estado LIKE '"+estado.getEstado()+"'";
+		String sql = "SELECT * FROM uf WHERE estado = '"+estado.getEstado()+"'";
 		try {
 			mStatement = mConnection.createStatement();
 			mResultSet = mStatement.executeQuery(sql);
 			if(!mResultSet.next()) {
-				sql = "INSERT INTO uf (uf, estado) VALUES (?, ?)";
+				sql = "INSERT INTO uf(uf, estado) VALUES (?, ?)";
 				mPreparedStatement = mConnection.prepareStatement(sql);
 				mPreparedStatement.setString(1, estado.getUf());
 				mPreparedStatement.setString(2, estado.getEstado());

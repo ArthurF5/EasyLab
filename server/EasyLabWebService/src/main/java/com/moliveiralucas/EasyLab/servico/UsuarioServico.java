@@ -12,7 +12,6 @@ import com.moliveiralucas.EasyLab.model.Usuario;
 import com.moliveiralucas.EasyLab.negocio.UsuarioNegocio;
 
 @RestController
-@RequestMapping("/usuario")
 public class UsuarioServico {
 
 	UsuarioNegocio mUsuarioNegocio = new UsuarioNegocio();
@@ -29,11 +28,6 @@ public class UsuarioServico {
 		return mGson.toJson(mUsuarioNegocio.cadastrarUsuario(mUsuario));
 	}
 	
-	@RequestMapping(value = "/teste/{teste}")
-	public @ResponseBody String teste(@PathVariable String teste) {
-		return teste;
-	}
-	
 	@RequestMapping(value = "/consultarUsuario/{parametroBusca}", 
 			method = RequestMethod.GET, 
 			produces = "application/json;charset=UTF-8")
@@ -48,10 +42,13 @@ public class UsuarioServico {
 		return mGson.toJson(mUsuarioNegocio.alterarUsuario(mUsuario));
 	}
 	
-	@RequestMapping(value = "/excluirUsuario", 
+	@RequestMapping(value = "/excluirUsuario/{usuario}_{id_Usuario}", 
 			method = RequestMethod.GET, 
 			produces = "application/json;charset=UTF-8")
-	public String excluirUsuario(@RequestParam(value="mUsuario")Usuario mUsuario) {
+	public String excluirUsuario(@PathVariable String usuario, @PathVariable Integer id_Usuario) {
+		Usuario mUsuario = new Usuario();
+		mUsuario.setId_Usuario(id_Usuario);
+		mUsuario.setUsuario(usuario);
 		return mGson.toJson(mUsuarioNegocio.excluirUsuario(mUsuario));
 	}
 }
