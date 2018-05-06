@@ -1,5 +1,7 @@
 package com.moliveiralucas.EasyLab.negocio;
 
+import com.moliveiralucas.EasyLab.model.PerfilUsuario;
+import com.moliveiralucas.EasyLab.model.Usuario;
 import com.moliveiralucas.EasyLab.model.UsuarioPerfil;
 import com.moliveiralucas.EasyLab.persistencia.UsuarioPerfilPersist;
 
@@ -35,8 +37,8 @@ public class UsuarioPerfilNegocio {
 		return codRetorno;
 	}
 
-	public UsuarioPerfil consultarUsuarioPerfil(String parametroBusca) {
-		return mUsuarioPerfilPersist.consultar(parametroBusca);
+	public UsuarioPerfil consultarUsuarioPerfil(Usuario mUsuario, PerfilUsuario mPerfilUsuario) {
+		return mUsuarioPerfilPersist.consultar(mUsuario,mPerfilUsuario);
 	}
 
 	public Integer excluirUsuarioPerfil(UsuarioPerfil mUsuarioPerfil) {

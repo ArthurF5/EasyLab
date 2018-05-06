@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 import com.moliveiralucas.EasyLab.connect.ConexaoMySQL;
 import com.moliveiralucas.EasyLab.model.PerfilUsuario;
@@ -45,14 +44,14 @@ public class UsuarioPerfilPersist {
 		return retorno;
 	}
 
-	public UsuarioPerfil consultar(String parametroBusca) {
+	public UsuarioPerfil consultar(Usuario usuario, PerfilUsuario perfilUsuario) {
 		UsuarioPerfil mUsuarioPerfil = new UsuarioPerfil();
 		mConexaoMySQL = new ConexaoMySQL();
 		Connection mConnection = null;
 		ResultSet mResultSet = null;
 		Statement mStatement = null;
 		mConnection = mConexaoMySQL.abreConexaoBD();
-		String sql = "SELECT * FROM usuarioPerfil WHERE id_Usuario =  AND id_PerfilUsuario = ";
+		String sql = "SELECT * FROM usuarioPerfil WHERE id_Usuario = "+usuario.getId_Usuario()+" AND id_PerfilUsuario = "+perfilUsuario.getId_PerfilUsuario();
 		try {
 			mStatement = mConnection.createStatement();
 			mResultSet = mStatement.executeQuery(sql);
@@ -65,19 +64,13 @@ public class UsuarioPerfilPersist {
 				Usuario mUsuario = new Usuario();
 				mUsuario.setId_Usuario(mResultSet.getInt("id_Usuario"));
 				mUsuarioPerfil.setUsuario(mUsuario);
-			}else {
+			} else {
 				mUsuarioPerfil = null;
 			}
 		}catch(SQLException sqle) {
 			System.out.println(""+sqle.getMessage());
 		}
 		return mUsuarioPerfil;
-	}
-	
-	public ArrayList<UsuarioPerfil> consultarUsuarios(PerfilUsuario mPerfilUsuario){
-		ArrayList<UsuarioPerfil> listaUsuarioPerfil = new ArrayList<UsuarioPerfil>();
-		
-		return listaUsuarioPerfil;
 	}
 
 	public Integer excluir(UsuarioPerfil mUsuarioPerfil) {
