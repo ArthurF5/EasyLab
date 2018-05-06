@@ -13,13 +13,12 @@ import com.moliveiralucas.EasyLab.model.UsuarioPerfil;
 import com.moliveiralucas.EasyLab.negocio.UsuarioPerfilNegocio;
 
 @RestController
+@RequestMapping("/usuarioPerfil")
 public class UsuarioPerfilServico {
 	UsuarioPerfilNegocio mUsuarioPerfilNegocio = new UsuarioPerfilNegocio();
 	Gson mGson = new Gson();
 	
-	@RequestMapping(value="/cadastrarUsuarioPerfil/{id_PerfilUsuario}_{id_Usuario}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/cadastrarUsuarioPerfil/{id_PerfilUsuario}_{id_Usuario}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String cadastrarUsuarioPerfil(@PathVariable String id_PerfilUsuario, @PathVariable String id_Usuario) {
 		PerfilUsuario mPerfilUsuario = new PerfilUsuario();
 		mPerfilUsuario.setId_PerfilUsuario(Integer.parseInt(id_PerfilUsuario));
@@ -32,9 +31,7 @@ public class UsuarioPerfilServico {
 		return mGson.toJson(mUsuarioPerfilNegocio.cadastrarUsuarioPerfil(mUsuarioPerfil));
 	}
 	
-	@RequestMapping(value="/consultarUsuarioPerfil/{id_PerfilUsuario}_{id_Usuario}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/consultarUsuarioPerfil/{id_PerfilUsuario}_{id_Usuario}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String consultarUsuarioPerfil(@PathVariable String id_PerfilUsuario, @PathVariable String id_Usuario) {
 		PerfilUsuario mPerfilUsuario = new PerfilUsuario();
 		mPerfilUsuario.setId_PerfilUsuario(Integer.parseInt(id_PerfilUsuario));
@@ -43,13 +40,8 @@ public class UsuarioPerfilServico {
 		return mGson.toJson(mUsuarioPerfilNegocio.consultarUsuarioPerfil(mUsuario, mPerfilUsuario));
 	}
 	
-	@RequestMapping(value="/excluirUsuarioPerfil/{id_PerfilUsuario}_{id_Usuario}_{id_UsuarioPerfil}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
-	public @ResponseBody String excluirUsuarioPerfil(
-			@PathVariable String id_PerfilUsuario, 
-			@PathVariable String id_Usuario, 
-			@PathVariable String id_UsuarioPerfil) {
+	@RequestMapping(value="/excluirUsuarioPerfil/{id_PerfilUsuario}_{id_Usuario}_{id_UsuarioPerfil}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String excluirUsuarioPerfil(@PathVariable String id_PerfilUsuario,	@PathVariable String id_Usuario, @PathVariable String id_UsuarioPerfil) {
 		PerfilUsuario mPerfilUsuario = new PerfilUsuario();
 		mPerfilUsuario.setId_PerfilUsuario(Integer.parseInt(id_PerfilUsuario));
 		Usuario mUsuario = new Usuario();

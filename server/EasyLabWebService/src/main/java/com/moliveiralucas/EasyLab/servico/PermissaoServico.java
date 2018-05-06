@@ -11,22 +11,19 @@ import com.moliveiralucas.EasyLab.model.Permissao;
 import com.moliveiralucas.EasyLab.negocio.PermissaoNegocio;
 
 @RestController
+@RequestMapping("/permissao")
 public class PermissaoServico {
 	PermissaoNegocio mPermissaoNegocio = new PermissaoNegocio();
 	Gson mGson = new Gson();
 	
-	@RequestMapping(value="/cadastrarPermissao/{permissao}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/cadastrarPermissao/{permissao}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String cadastrarPermissao(@PathVariable String permissao) {
 		Permissao mPermissao = new Permissao();
 		mPermissao.setPermissao(permissao);
 		return mGson.toJson(mPermissaoNegocio.cadastrarPermissao(mPermissao));
 	}
 	
-	@RequestMapping(value="/alterarPermissao/{permissao}_{id_Permissao}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/alterarPermissao/{permissao}_{id_Permissao}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String alterarPermissao(@PathVariable String permissao, @PathVariable String id_Permissao) {
 		Permissao mPermissao = new Permissao();
 		mPermissao.setId_Permissao(Integer.parseInt(id_Permissao));
@@ -34,16 +31,12 @@ public class PermissaoServico {
 		return mGson.toJson(mPermissaoNegocio.alterarPermissao(mPermissao));
 	}
 	
-	@RequestMapping(value="/consultarPermissao/{parametroBusca}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/consultarPermissao/{parametroBusca}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String consultarPermissao(@PathVariable String parametroBusca) {
 		return mGson.toJson(mPermissaoNegocio.consultarPermissao(parametroBusca));
 	}
 	
-	@RequestMapping(value="/excluirPermissao/{permissao}_{id_Permissao}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/excluirPermissao/{permissao}_{id_Permissao}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String excluirPermissao(@PathVariable String permissao, @PathVariable String id_Permissao) {
 		Permissao mPermissao = new Permissao();
 		mPermissao.setId_Permissao(Integer.parseInt(id_Permissao));

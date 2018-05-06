@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CadastroPage {
   items;
   cadastroForm: FormGroup;
-
+ 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -53,5 +53,8 @@ export class CadastroPage {
 
   onSubmit(): void {
     console.log(this.cadastroForm.value);
+    if(this.cadastroForm.value !== null){
+
+    }
   }
 }

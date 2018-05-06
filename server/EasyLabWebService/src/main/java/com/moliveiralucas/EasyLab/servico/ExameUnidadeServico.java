@@ -14,19 +14,14 @@ import com.moliveiralucas.EasyLab.model.UnidadeLaboratorio;
 import com.moliveiralucas.EasyLab.negocio.ExameUnidadeNegocio;
 
 @RestController
+@RequestMapping("/exameUnidade")
 public class ExameUnidadeServico {
 
 	ExameUnidadeNegocio mExameUnidadeNegocio = new ExameUnidadeNegocio();
 	Gson mGson = new Gson();
 	
-	@RequestMapping(value="/cadastrarExameUnidade/{id_Exame}_{id_UnidadeLaboratorio}_{id_Convenio}_{valor}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
-	public @ResponseBody String cadastrarExameUnidade(
-			@PathVariable String id_Exame,
-			@PathVariable String id_UnidadeLaboratorio,
-			@PathVariable String id_Convenio,
-			@PathVariable String valor) {
+	@RequestMapping(value="/cadastrarExameUnidade/{id_Exame}_{id_UnidadeLaboratorio}_{id_Convenio}_{valor}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String cadastrarExameUnidade(@PathVariable String id_Exame, @PathVariable String id_UnidadeLaboratorio, @PathVariable String id_Convenio, @PathVariable String valor) {
 		Exame mExame = new Exame();
 		mExame.setId_Exame(Integer.parseInt(id_Exame));
 		UnidadeLaboratorio mUnidadeLaboratorio = new UnidadeLaboratorio();
@@ -41,15 +36,8 @@ public class ExameUnidadeServico {
 		return mGson.toJson(mExameUnidadeNegocio.cadastrarExameUnidade(mExameUnidade));
 	}
 	
-	@RequestMapping(value="/alterarExameUnidade/{id_Exame}_{id_UnidadeLaboratorio}_{id_Convenio}_{valor}_{id_exameUnidade}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
-	public @ResponseBody String alterarExameUnidade(
-			@PathVariable String id_Exame,
-			@PathVariable String id_UnidadeLaboratorio,
-			@PathVariable String id_Convenio,
-			@PathVariable String valor,
-			@PathVariable String id_exameUnidade) {
+	@RequestMapping(value="/alterarExameUnidade/{id_Exame}_{id_UnidadeLaboratorio}_{id_Convenio}_{valor}_{id_exameUnidade}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String alterarExameUnidade(@PathVariable String id_Exame, @PathVariable String id_UnidadeLaboratorio, @PathVariable String id_Convenio, @PathVariable String valor, @PathVariable String id_exameUnidade) {
 		Exame mExame = new Exame();
 		mExame.setId_Exame(Integer.parseInt(id_Exame));
 		UnidadeLaboratorio mUnidadeLaboratorio = new UnidadeLaboratorio();
@@ -66,21 +54,13 @@ public class ExameUnidadeServico {
 	}
 	
 	/*Verificar como passar objeto via json*/
-	@RequestMapping(value="/consultarExameUnidade/{id_Exame}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
-	public @ResponseBody String consultarExameUnidade() {
-		return null;
-	}
+//	@RequestMapping(value="/consultarExameUnidade/{id_Exame}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+//	public @ResponseBody String consultarExameUnidade() {
+//		return null;
+//	}
 	
-	@RequestMapping(value="/excluirExameUnidade/{id_Exame}_{id_UnidadeLaboratorio}_{id_Convenio}_{valor}_{id_exameUnidade}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
-	public @ResponseBody String excluirExameUnidade(@PathVariable String id_Exame,
-			@PathVariable String id_UnidadeLaboratorio,
-			@PathVariable String id_Convenio,
-			@PathVariable String valor,
-			@PathVariable String id_exameUnidade) {
+	@RequestMapping(value="/excluirExameUnidade/{id_Exame}_{id_UnidadeLaboratorio}_{id_Convenio}_{valor}_{id_exameUnidade}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String excluirExameUnidade(@PathVariable String id_Exame, @PathVariable String id_UnidadeLaboratorio, @PathVariable String id_Convenio, @PathVariable String valor, @PathVariable String id_exameUnidade) {
 		Exame mExame = new Exame();
 		mExame.setId_Exame(Integer.parseInt(id_Exame));
 		UnidadeLaboratorio mUnidadeLaboratorio = new UnidadeLaboratorio();

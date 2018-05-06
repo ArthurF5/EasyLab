@@ -13,20 +13,14 @@ import com.moliveiralucas.EasyLab.model.UnidadeLaboratorio;
 import com.moliveiralucas.EasyLab.negocio.UnidadeLaboratorioNegocio;
 
 @RestController
+@RequestMapping("/unidadeLaboratorio")
 public class UnidadeLaboratorioServico {
 	UnidadeLaboratorioNegocio mUnidadeLaboratorioNegocio = new UnidadeLaboratorioNegocio();
 	Gson mGson = new Gson();
 	
-	@RequestMapping(value = "/cadastrarUnidadeLaboratorio/{nomeUnidade}_{logradouro}_{complemento}_{numero}_{id_Cidade}_{id_Laboratorio}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/cadastrarUnidadeLaboratorio/{nomeUnidade}_{logradouro}_{complemento}_{numero}_{id_Cidade}_{id_Laboratorio}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String cadastrarUnidadeLaboratorio(
-			@PathVariable String nomeUnidade,
-			@PathVariable String logradouro,
-			@PathVariable String complemento,
-			@PathVariable String numero,
-			@PathVariable String id_Cidade,
-			@PathVariable String id_Laboratorio) {
+			@PathVariable String nomeUnidade, @PathVariable String logradouro, @PathVariable String complemento, @PathVariable String numero, @PathVariable String id_Cidade, @PathVariable String id_Laboratorio) {
 		Laboratorio mLaboratorio = new Laboratorio();
 		mLaboratorio.setId_Laboratorio(Integer.parseInt(id_Laboratorio));
 		Cidade mCidade = new Cidade();
@@ -41,17 +35,9 @@ public class UnidadeLaboratorioServico {
 		return mGson.toJson(mUnidadeLaboratorioNegocio.cadastrarUnidadeLaboratorio(mUnidadeLaboratorio));
 	}
 	
-	@RequestMapping(value = "/alterarUnidadeLaboratorio/{nomeUnidade}_{logradouro}_{complemento}_{numero}_{id_Cidade}_{id_Laboratorio}_{id_UnidadeLaboratorio}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/alterarUnidadeLaboratorio/{nomeUnidade}_{logradouro}_{complemento}_{numero}_{id_Cidade}_{id_Laboratorio}_{id_UnidadeLaboratorio}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String alterarUnidadeLaboratorio(
-			@PathVariable String nomeUnidade,
-			@PathVariable String logradouro,
-			@PathVariable String complemento,
-			@PathVariable String numero,
-			@PathVariable String id_Cidade,
-			@PathVariable String id_Laboratorio,
-			@PathVariable String id_UnidadeLaboratorio) {
+			@PathVariable String nomeUnidade, @PathVariable String logradouro, @PathVariable String complemento, @PathVariable String numero, @PathVariable String id_Cidade, @PathVariable String id_Laboratorio, @PathVariable String id_UnidadeLaboratorio) {
 		Laboratorio mLaboratorio = new Laboratorio();
 		mLaboratorio.setId_Laboratorio(Integer.parseInt(id_Laboratorio));
 		Cidade mCidade = new Cidade();
@@ -67,23 +53,13 @@ public class UnidadeLaboratorioServico {
 		return mGson.toJson(mUnidadeLaboratorioNegocio.alterarUnidadeLaboratorio(mUnidadeLaboratorio));
 	}
 	
-	@RequestMapping(value = "/consultarUnidadeLaboratorio/{parametroBusca}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/consultarUnidadeLaboratorio/{parametroBusca}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String consultarUnidadeLaboratorio(@PathVariable String parametroBusca) {
 		return mGson.toJson(mUnidadeLaboratorioNegocio.consultarUnidadeLaboratorio(parametroBusca));
 	}
 	
-	@RequestMapping(value = "/excluirUnidadeLaboratorio/{nomeUnidade}_{logradouro}_{complemento}_{numero}_{id_Cidade}_{id_Laboratorio}_{id_UnidadeLaboratorio}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
-	public @ResponseBody String excluirUnidadeLaboratorio(@PathVariable String nomeUnidade,
-			@PathVariable String logradouro,
-			@PathVariable String complemento,
-			@PathVariable String numero,
-			@PathVariable String id_Cidade,
-			@PathVariable String id_Laboratorio,
-			@PathVariable String id_UnidadeLaboratorio) {
+	@RequestMapping(value = "/excluirUnidadeLaboratorio/{nomeUnidade}_{logradouro}_{complemento}_{numero}_{id_Cidade}_{id_Laboratorio}_{id_UnidadeLaboratorio}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String excluirUnidadeLaboratorio(@PathVariable String nomeUnidade, @PathVariable String logradouro, @PathVariable String complemento, @PathVariable String numero, @PathVariable String id_Cidade, @PathVariable String id_Laboratorio, @PathVariable String id_UnidadeLaboratorio) {
 		Laboratorio mLaboratorio = new Laboratorio();
 		mLaboratorio.setId_Laboratorio(Integer.parseInt(id_Laboratorio));
 		Cidade mCidade = new Cidade();

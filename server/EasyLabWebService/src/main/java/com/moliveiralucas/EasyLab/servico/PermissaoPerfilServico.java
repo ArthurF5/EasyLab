@@ -13,16 +13,13 @@ import com.moliveiralucas.EasyLab.model.PermissaoPerfil;
 import com.moliveiralucas.EasyLab.negocio.PermissaoPerfilNegocio;
 
 @RestController
+@RequestMapping("/permissaoPerfil")
 public class PermissaoPerfilServico {
 	PermissaoPerfilNegocio mPermissaoPerfilNegocio = new PermissaoPerfilNegocio();
 	Gson mGson = new Gson();
 	
-	@RequestMapping(value = "/PermissaoPerfil/{id_Permissao}_{id_PerfilUsuario}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
-	public @ResponseBody String cadastrarPermissaoPerfil(
-			@PathVariable String id_Permissao, 
-			@PathVariable String id_PerfilUsuario) {
+	@RequestMapping(value = "/PermissaoPerfil/{id_Permissao}_{id_PerfilUsuario}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String cadastrarPermissaoPerfil(@PathVariable String id_Permissao,	@PathVariable String id_PerfilUsuario) {
 		Permissao mPermissao = new Permissao();
 		mPermissao.setId_Permissao(Integer.parseInt(id_Permissao));
 		PerfilUsuario mPerfilUsuario = new PerfilUsuario();
@@ -33,22 +30,15 @@ public class PermissaoPerfilServico {
 		return mGson.toJson(mPermissaoPerfilNegocio.cadastrarPermissaoPerfil(mPermissaoPerfil));
 	}
 	
-	@RequestMapping(value = "/PermissaoPerfil/{id_PerfilUsuario}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/PermissaoPerfil/{id_PerfilUsuario}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String listarPermissaoPerfil(@PathVariable String id_PerfilUsuario) {
 		PerfilUsuario mPerfilUsuario = new PerfilUsuario();
 		mPerfilUsuario.setId_PerfilUsuario(Integer.parseInt(id_PerfilUsuario));
 		return mGson.toJson(mPermissaoPerfilNegocio.listarPermissaoPerfil(mPerfilUsuario));
 	}
 	
-	@RequestMapping(value = "/PermissaoPerfil/{id_Permissao}_{id_PerfilUsuario}_{id_PermissaoPerfil}",
-			method = RequestMethod.GET,
-			produces = "application/json;charset=UTF-8")
-	public @ResponseBody String excluirPermissaoPerfil(
-			@PathVariable String id_Permissao, 
-			@PathVariable String id_PerfilUsuario, 
-			@PathVariable String id_PermissaoPerfil) {
+	@RequestMapping(value = "/PermissaoPerfil/{id_Permissao}_{id_PerfilUsuario}_{id_PermissaoPerfil}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String excluirPermissaoPerfil(@PathVariable String id_Permissao, @PathVariable String id_PerfilUsuario, @PathVariable String id_PermissaoPerfil) {
 		Permissao mPermissao = new Permissao();
 		mPermissao.setId_Permissao(Integer.parseInt(id_Permissao));
 		PerfilUsuario mPerfilUsuario = new PerfilUsuario();
@@ -59,5 +49,4 @@ public class PermissaoPerfilServico {
 		mPermissaoPerfil.setPerfilUsuario(mPerfilUsuario);
 		return mGson.toJson(mPermissaoPerfilNegocio.excluirPermissaoPerfil(mPermissaoPerfil));
 	}
-	
 }
