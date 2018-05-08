@@ -1,12 +1,18 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,16 +28,23 @@ public class Cidade implements Serializable {
 
 	@Column(name = "cidade")
 	private String cidade;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_Estado", referencedColumnName = "id_Estado", nullable = false)
 	private Estado estado;
 
-	public Cidade () {}
-	
+	@OneToMany(mappedBy = "cidade", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<UnidadeLaboratorio> listaUnidades;
+
+	public Cidade() {
+	}
+
 	public Cidade(Integer id_Cidade, String cidade) {
 		super();
 		this.id_Cidade = id_Cidade;
 		this.cidade = cidade;
 	}
-	
+
 	public Integer getId_Cidade() {
 		return id_Cidade;
 	}
@@ -54,6 +67,14 @@ public class Cidade implements Serializable {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	public List<UnidadeLaboratorio> getListaUnidades() {
+		return listaUnidades;
+	}
+
+	public void setListaUnidades(List<UnidadeLaboratorio> listaUnidades) {
+		this.listaUnidades = listaUnidades;
 	}
 
 	@Override

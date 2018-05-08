@@ -1,14 +1,16 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,7 +30,8 @@ public class Estado implements Serializable {
 	@Column(name = "uf")
 	private String uf;
 
-	//private List<Cidade> cidades = new ArrayList<>();
+	@OneToMany(mappedBy="estado", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Cidade> cidades;
 
 	public Estado() {
 	}
@@ -44,6 +47,14 @@ public class Estado implements Serializable {
 		return id_Estado;
 	}
 
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+	
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
+	}
+	
 	public void setId_Estado(Integer id_Estado) {
 		this.id_Estado = id_Estado;
 	}

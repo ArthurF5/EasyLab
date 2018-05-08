@@ -1,12 +1,16 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,14 +27,18 @@ public class Convenio implements Serializable {
 	@Column(name = "convenio")
 	private String convenio;
 
-	public Convenio () {}
-	
+	@OneToMany(mappedBy = "convenios", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ExameUnidade> listaExamesUnidade;
+
+	public Convenio() {
+	}
+
 	public Convenio(Integer id_Convenio, String convenio) {
 		super();
 		this.id_Convenio = id_Convenio;
 		this.convenio = convenio;
 	}
-	
+
 	public Integer getId_Convenio() {
 		return id_Convenio;
 	}
@@ -45,6 +53,14 @@ public class Convenio implements Serializable {
 
 	public void setConvenio(String convenio) {
 		this.convenio = convenio;
+	}
+
+	public List<ExameUnidade> getListaExamesUnidade() {
+		return listaExamesUnidade;
+	}
+
+	public void setListaExamesUnidade(List<ExameUnidade> listaExamesUnidade) {
+		this.listaExamesUnidade = listaExamesUnidade;
 	}
 
 	@Override

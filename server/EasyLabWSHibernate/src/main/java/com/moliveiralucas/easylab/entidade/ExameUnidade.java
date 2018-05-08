@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,21 +23,25 @@ public class ExameUnidade implements Serializable {
 	@Column(name = "id_ExameUnidade")
 	private Integer id_ExameUnidade;
 
-	@Column(name = "exame")
-	private Exame exame;
-
-	@Column(name = "unidadeLaboratorio")
-	private UnidadeLaboratorio unidadeLaboratorio;
-
 	@Column(name = "valor")
 	private Double valor;
 
-	@Column(name = "convenio")
-	private Convenio convenio;
+	/* Relacionamentos */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_convenio", referencedColumnName = "id_convenio", nullable = false)
+	private Convenio convenios;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_Exame", referencedColumnName = "id_Exame", nullable = false)
+	private Exame exames;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_Unidadelaboratorio", referencedColumnName = "id_UnidadeLaboratorio", nullable = false)
+	private UnidadeLaboratorio unidadesLaboratorio;
 
 	public ExameUnidade() {
 	}
-	
+
 	public ExameUnidade(Integer id_ExameUnidade, Double valor) {
 		super();
 		this.id_ExameUnidade = id_ExameUnidade;
@@ -49,20 +56,20 @@ public class ExameUnidade implements Serializable {
 		this.id_ExameUnidade = id_ExameUnidade;
 	}
 
-	public Exame getExame() {
-		return exame;
+	public Exame getExames() {
+		return exames;
 	}
 
-	public void setExame(Exame exame) {
-		this.exame = exame;
+	public void setExames(Exame exames) {
+		this.exames = exames;
 	}
 
-	public UnidadeLaboratorio getUnidadeLaboratorio() {
-		return unidadeLaboratorio;
+	public UnidadeLaboratorio getUnidadesLaboratorio() {
+		return unidadesLaboratorio;
 	}
 
-	public void setUnidadeLaboratorio(UnidadeLaboratorio unidadeLaboratorio) {
-		this.unidadeLaboratorio = unidadeLaboratorio;
+	public void setUnidadeLaboratorio(UnidadeLaboratorio unidadesLaboratorio) {
+		this.unidadesLaboratorio = unidadesLaboratorio;
 	}
 
 	public Double getValor() {
@@ -73,12 +80,12 @@ public class ExameUnidade implements Serializable {
 		this.valor = valor;
 	}
 
-	public Convenio getConvenio() {
-		return convenio;
+	public Convenio getConvenios() {
+		return convenios;
 	}
 
-	public void setConvenio(Convenio convenio) {
-		this.convenio = convenio;
+	public void setConvenios(Convenio convenios) {
+		this.convenios = convenios;
 	}
 
 	@Override

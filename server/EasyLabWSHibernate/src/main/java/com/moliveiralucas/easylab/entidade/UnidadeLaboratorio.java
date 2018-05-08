@@ -1,12 +1,19 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,28 +26,35 @@ public class UnidadeLaboratorio implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_UnidadeLaboratorio")
 	private Integer id_UnidadeLaboratorio;
-	
+
 	@Column(name = "nomeUnidade")
 	private String nomeUnidade;
-	
+
 	@Column(name = "logradouro")
 	private String logradouro;
-	
+
 	@Column(name = "complemento")
 	private String complemento;
-	
+
 	@Column(name = "numero")
 	private String numero;
-	
-	@Column(name = "cidade")
+
+	/* Relacionamentos */
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_cidade", referencedColumnName = "id_cidade", nullable = false)
 	private Cidade cidade;
-	
-	@Column(name = "laboratorio")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_Laboratorio", referencedColumnName = "id_Laboratorio", nullable = false)
 	private Laboratorio laboratorio;
+
+	@OneToMany(mappedBy = "unidadesLaboratorio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ExameUnidade> unidadesLaboratorio;
 
 	public UnidadeLaboratorio() {
 	}
-	
+
 	public UnidadeLaboratorio(Integer id_UnidadeLaboratorio, String nomeUnidade, String logradouro, String complemento,
 			String numero) {
 		super();
@@ -50,7 +64,7 @@ public class UnidadeLaboratorio implements Serializable {
 		this.complemento = complemento;
 		this.numero = numero;
 	}
-	
+
 	public Integer getId_UnidadeLaboratorio() {
 		return id_UnidadeLaboratorio;
 	}
@@ -105,6 +119,14 @@ public class UnidadeLaboratorio implements Serializable {
 
 	public void setLaboratorio(Laboratorio laboratorio) {
 		this.laboratorio = laboratorio;
+	}
+	
+	public List<ExameUnidade> getUnidadesLaboratorio() {
+		return unidadesLaboratorio;
+	}
+
+	public void setUnidadesLaboratorio(List<ExameUnidade> unidadesLaboratorio) {
+		this.unidadesLaboratorio = unidadesLaboratorio;
 	}
 
 	@Override

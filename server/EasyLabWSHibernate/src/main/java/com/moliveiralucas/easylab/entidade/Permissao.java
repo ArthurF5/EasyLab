@@ -1,12 +1,14 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +25,11 @@ public class Permissao implements Serializable {
 	@Column(name = "permissao")
 	private String permissao;
 
+	/* Relacionamento */
+	
+	@ManyToMany(mappedBy = "permissoesDoPerfil")
+	private List<PerfilUsuario> listaPerfil;
+	
 	public Permissao() {
 	}
 	
@@ -46,6 +53,14 @@ public class Permissao implements Serializable {
 
 	public void setPermissao(String permissao) {
 		this.permissao = permissao;
+	}
+
+	public List<PerfilUsuario> getListaPerfil() {
+		return listaPerfil;
+	}
+
+	public void setListaPerfil(List<PerfilUsuario> listaPerfil) {
+		this.listaPerfil = listaPerfil;
 	}
 
 	@Override

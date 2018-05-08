@@ -1,12 +1,14 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +31,9 @@ public class Usuario implements Serializable {
 	@Column(name = "email")
 	private String email;
 
+	@ManyToMany(mappedBy = "usuariosDoPerfil")
+	private List<PerfilUsuario> listaPerfilUsuario;
+
 	public Usuario() {
 	}
 
@@ -39,7 +44,7 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 		this.email = email;
 	}
-	
+
 	public Integer getId_Usuario() {
 		return id_Usuario;
 	}
@@ -70,6 +75,14 @@ public class Usuario implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<PerfilUsuario> getListaPerfilUsuario() {
+		return listaPerfilUsuario;
+	}
+
+	public void setListaPerfilUsuario(List<PerfilUsuario> listaPerfilUsuario) {
+		this.listaPerfilUsuario = listaPerfilUsuario;
 	}
 
 	@Override

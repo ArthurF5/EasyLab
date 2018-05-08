@@ -1,12 +1,18 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +29,19 @@ public class PerfilUsuario implements Serializable {
 	@Column(name = "perfilUsuario")
 	private String perfilUsuario;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Usuario usuario;
+	
+	/* Relacionamentos */
+	
+	@ManyToMany
+	@JoinTable(name = "usuariosDoPerfil", joinColumns = @JoinColumn(name = "id_PerfilUsuario"), inverseJoinColumns = @JoinColumn(name = "id_Usuario"))
+	private List<Usuario> usuariosDoPerfil;
+	
+	@ManyToMany
+	@JoinTable(name = "permissoesDoPerfil", joinColumns = @JoinColumn(name = "id_PerfilUsuario"), inverseJoinColumns = @JoinColumn(name = "id_Permissao"))
+	private List<Permissao> permissoesDoPerfil;
+	
 	public PerfilUsuario() {
 	}
 
@@ -46,6 +65,30 @@ public class PerfilUsuario implements Serializable {
 
 	public void setPerfilUsuario(String perfilUsuario) {
 		this.perfilUsuario = perfilUsuario;
+	}
+
+	public List<Usuario> getUsuariosDoPerfil() {
+		return usuariosDoPerfil;
+	}
+
+	public void setUsuariosDoPerfil(List<Usuario> usuariosDoPerfil) {
+		this.usuariosDoPerfil = usuariosDoPerfil;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Permissao> getPermissoesDoPerfil() {
+		return permissoesDoPerfil;
+	}
+
+	public void setPermissoesDoPerfil(List<Permissao> permissoesDoPerfil) {
+		this.permissoesDoPerfil = permissoesDoPerfil;
 	}
 
 	@Override

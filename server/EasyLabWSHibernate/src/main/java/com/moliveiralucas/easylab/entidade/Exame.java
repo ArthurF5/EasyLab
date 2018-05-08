@@ -1,12 +1,16 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +29,19 @@ public class Exame implements Serializable {
 
 	@Column(name = "sigla")
 	private String sigla;
+	
+	/* Relacionamentos */
+	
+	@OneToMany(mappedBy="exames", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ExameUnidade> listaExames;
+
+	public List<ExameUnidade> getListaExames() {
+		return listaExames;
+	}
+
+	public void setListaExames(List<ExameUnidade> listaExames) {
+		this.listaExames = listaExames;
+	}
 
 	public Exame () {}
 	
