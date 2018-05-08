@@ -23,12 +23,6 @@ public class Permissao implements Serializable {
 	@Column(name = "permissao")
 	private String permissao;
 
-	public Permissao(Integer id_Permissao, String permissao) {
-		super();
-		this.id_Permissao = id_Permissao;
-		this.permissao = permissao;
-	}
-
 	public Integer getId_Permissao() {
 		return id_Permissao;
 	}

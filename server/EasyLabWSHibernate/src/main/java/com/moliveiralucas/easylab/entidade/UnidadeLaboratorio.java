@@ -38,18 +38,6 @@ public class UnidadeLaboratorio implements Serializable {
 	@Column(name = "laboratorio")
 	private Laboratorio laboratorio;
 
-	public UnidadeLaboratorio(Integer id_UnidadeLaboratorio, String nomeUnidade, String logradouro, String complemento,
-			String numero, Cidade cidade, Laboratorio laboratorio) {
-		super();
-		this.id_UnidadeLaboratorio = id_UnidadeLaboratorio;
-		this.nomeUnidade = nomeUnidade;
-		this.logradouro = logradouro;
-		this.complemento = complemento;
-		this.numero = numero;
-		this.cidade = cidade;
-		this.laboratorio = laboratorio;
-	}
-
 	public Integer getId_UnidadeLaboratorio() {
 		return id_UnidadeLaboratorio;
 	}

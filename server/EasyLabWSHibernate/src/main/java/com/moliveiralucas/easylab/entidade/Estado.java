@@ -26,13 +26,6 @@ public class Estado implements Serializable {
 	@Column(name = "uf")
 	private String uf;
 
-	public Estado(Integer id_Estado, String estado, String uf) {
-		super();
-		this.id_Estado = id_Estado;
-		this.estado = estado;
-		this.uf = uf;
-	}
-
 	public Integer getId_Estado() {
 		return id_Estado;
 	}

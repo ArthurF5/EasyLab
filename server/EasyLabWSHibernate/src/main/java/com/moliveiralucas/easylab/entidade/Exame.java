@@ -26,13 +26,6 @@ public class Exame implements Serializable {
 	@Column(name = "sigla")
 	private String sigla;
 
-	public Exame(Integer id_Exame, String exame, String sigla) {
-		super();
-		this.id_Exame = id_Exame;
-		this.exame = exame;
-		this.sigla = sigla;
-	}
-
 	public Integer getId_Exame() {
 		return id_Exame;
 	}

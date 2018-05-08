@@ -23,12 +23,6 @@ public class Convenio implements Serializable {
 	@Column(name = "convenio")
 	private String convenio;
 
-	public Convenio(Integer id_Convenio, String convenio) {
-		super();
-		this.id_Convenio = id_Convenio;
-		this.convenio = convenio;
-	}
-
 	public Integer getId_Convenio() {
 		return id_Convenio;
 	}

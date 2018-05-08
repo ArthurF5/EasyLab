@@ -26,13 +26,6 @@ public class Cidade implements Serializable {
 	@Column(name = "estado")
 	private Estado estado;
 
-	public Cidade(Integer id_Cidade, String cidade, Estado estado) {
-		super();
-		this.id_Cidade = id_Cidade;
-		this.cidade = cidade;
-		this.estado = estado;
-	}
-
 	public Integer getId_Cidade() {
 		return id_Cidade;
 	}

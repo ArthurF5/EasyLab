@@ -23,12 +23,6 @@ public class Laboratorio implements Serializable {
 	@Column(name = "laboratorio")
 	private String laboratorio;
 
-	public Laboratorio(Integer id_Laboratorio, String laboratorio) {
-		super();
-		this.id_Laboratorio = id_Laboratorio;
-		this.laboratorio = laboratorio;
-	}
-
 	public Integer getId_Laboratorio() {
 		return id_Laboratorio;
 	}
