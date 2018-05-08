@@ -26,6 +26,9 @@ public class UsuarioPerfil implements Serializable {
 	@Column(name = "usuario")
 	private Usuario usuario;
 
+	public UsuarioPerfil() {
+	}
+	
 	public Integer getId_UsuarioPerfil() {
 		return id_UsuarioPerfil;
 	}

@@ -22,10 +22,16 @@ public class Cidade implements Serializable {
 
 	@Column(name = "cidade")
 	private String cidade;
-
-	@Column(name = "estado")
 	private Estado estado;
 
+	public Cidade () {}
+	
+	public Cidade(Integer id_Cidade, String cidade) {
+		super();
+		this.id_Cidade = id_Cidade;
+		this.cidade = cidade;
+	}
+	
 	public Integer getId_Cidade() {
 		return id_Cidade;
 	}

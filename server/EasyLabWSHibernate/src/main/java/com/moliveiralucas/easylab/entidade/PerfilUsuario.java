@@ -23,6 +23,15 @@ public class PerfilUsuario implements Serializable {
 	@Column(name = "perfilUsuario")
 	private String perfilUsuario;
 
+	public PerfilUsuario() {
+	}
+
+	public PerfilUsuario(Integer id_PerfilUsuario, String perfilUsuario) {
+		super();
+		this.id_PerfilUsuario = id_PerfilUsuario;
+		this.perfilUsuario = perfilUsuario;
+	}
+
 	public Integer getId_PerfilUsuario() {
 		return id_PerfilUsuario;
 	}

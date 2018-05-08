@@ -29,6 +29,17 @@ public class Usuario implements Serializable {
 	@Column(name = "email")
 	private String email;
 
+	public Usuario() {
+	}
+
+	public Usuario(Integer id_Usuario, String usuario, String senha, String email) {
+		super();
+		this.id_Usuario = id_Usuario;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.email = email;
+	}
+	
 	public Integer getId_Usuario() {
 		return id_Usuario;
 	}

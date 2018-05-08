@@ -1,6 +1,8 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,6 +28,18 @@ public class Estado implements Serializable {
 	@Column(name = "uf")
 	private String uf;
 
+	//private List<Cidade> cidades = new ArrayList<>();
+
+	public Estado() {
+	}
+
+	public Estado(Integer id_Estado, String estado, String uf) {
+		super();
+		this.id_Estado = id_Estado;
+		this.estado = estado;
+		this.uf = uf;
+	}
+	
 	public Integer getId_Estado() {
 		return id_Estado;
 	}

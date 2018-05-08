@@ -32,6 +32,15 @@ public class ExameUnidade implements Serializable {
 	@Column(name = "convenio")
 	private Convenio convenio;
 
+	public ExameUnidade() {
+	}
+	
+	public ExameUnidade(Integer id_ExameUnidade, Double valor) {
+		super();
+		this.id_ExameUnidade = id_ExameUnidade;
+		this.valor = valor;
+	}
+
 	public Integer getId_ExameUnidade() {
 		return id_ExameUnidade;
 	}

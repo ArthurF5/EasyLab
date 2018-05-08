@@ -30,6 +30,16 @@ public class PermissaoPerfil implements Serializable {
 	@Column(name = "permissoes")
 	private ArrayList<Permissao> permissoes;
 
+	public PermissaoPerfil() {
+	}
+	
+	public PermissaoPerfil(Integer id_permissaoPerfil, Permissao permissao, PerfilUsuario perfilUsuario) {
+		super();
+		this.id_permissaoPerfil = id_permissaoPerfil;
+		this.permissao = permissao;
+		this.perfilUsuario = perfilUsuario;
+	}
+	
 	public Integer getId_permissaoPerfil() {
 		return id_permissaoPerfil;
 	}
