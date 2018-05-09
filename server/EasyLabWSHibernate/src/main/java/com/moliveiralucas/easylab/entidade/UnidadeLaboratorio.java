@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "unidadeLaboratorio")
 public class UnidadeLaboratorio implements Serializable {
@@ -45,6 +47,8 @@ public class UnidadeLaboratorio implements Serializable {
 	@JoinColumn(name = "id_cidade", referencedColumnName = "id_cidade", nullable = false)
 	private Cidade cidade;
 
+	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_Laboratorio", referencedColumnName = "id_Laboratorio", nullable = false)
 	private Laboratorio laboratorio;
