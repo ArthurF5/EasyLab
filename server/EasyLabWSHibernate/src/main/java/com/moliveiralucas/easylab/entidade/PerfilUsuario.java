@@ -3,7 +3,6 @@ package com.moliveiralucas.easylab.entidade;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,29 +24,31 @@ public class PerfilUsuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_PerfilUsuario")
 	private Integer id_PerfilUsuario;
-
-	@Column(name = "perfilUsuario")
 	private String perfilUsuario;
 
-	
 	/* Relacionamentos */
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Usuario usuario;
-	
-	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
+
+	/*
+	 * JsonBackReference - Quer dizer que o 'relacionamento' não pode ser
+	 * serializado pelo JSON
+	 */
 	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "usuariosDoPerfil", joinColumns = @JoinColumn(name = "id_PerfilUsuario"), inverseJoinColumns = @JoinColumn(name = "id_Usuario"))
 	private List<Usuario> usuariosDoPerfil;
-	
-	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
+
+	/*
+	 * JsonBackReference - Quer dizer que o 'relacionamento' não pode ser
+	 * serializado pelo JSON
+	 */
 	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "permissoesDoPerfil", joinColumns = @JoinColumn(name = "id_PerfilUsuario"), inverseJoinColumns = @JoinColumn(name = "id_Permissao"))
 	private List<Permissao> permissoesDoPerfil;
-	
+
 	public PerfilUsuario() {
 	}
 

@@ -2,7 +2,6 @@ package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,10 +22,7 @@ public class ExameUnidade implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_ExameUnidade")
 	private Integer id_ExameUnidade;
-
-	@Column(name = "valor")
 	private Double valor;
 
 	/* Relacionamentos */

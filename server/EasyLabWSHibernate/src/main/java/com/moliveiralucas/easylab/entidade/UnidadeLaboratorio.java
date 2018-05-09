@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -26,24 +24,15 @@ public class UnidadeLaboratorio implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_UnidadeLaboratorio")
 	private Integer id_UnidadeLaboratorio;
-
-	@Column(name = "nomeUnidade")
 	private String nomeUnidade;
-
-	@Column(name = "logradouro")
 	private String logradouro;
-
-	@Column(name = "complemento")
 	private String complemento;
-
-	@Column(name = "numero")
 	private String numero;
 
 	/* Relacionamentos */
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_cidade", referencedColumnName = "id_cidade", nullable = false)
 	private Cidade cidade;
 

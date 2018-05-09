@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,13 +22,11 @@ public class Laboratorio implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_Laboratorio")
 	private Integer id_Laboratorio;
-
-	@Column(name = "laboratorio")
 	private String laboratorio;
 
 	/* Relacionamentos */
+	
 	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
 	@JsonManagedReference
 	@OneToMany(mappedBy="laboratorio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

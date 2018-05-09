@@ -3,7 +3,6 @@ package com.moliveiralucas.easylab.entidade;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,10 +20,7 @@ public class Permissao implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_Permissao")
 	private Integer id_Permissao;
-
-	@Column(name = "permissao")
 	private String permissao;
 
 	/* Relacionamento */

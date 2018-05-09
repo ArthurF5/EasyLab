@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,19 +24,22 @@ public class Cidade implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_Cidade")
 	private Integer id_Cidade;
-
-	@Column(name = "cidade")
 	private String cidade;
 
-	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
+	/*
+	 * JsonBackReference - Quer dizer que o 'relacionamento' não pode ser
+	 * serializado pelo JSON
+	 */
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_Estado", referencedColumnName = "id_Estado", nullable = false)
 	private Estado estado;
 
-	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
+	/*
+	 * JsonBackReference - Quer dizer que o 'relacionamento' não pode ser
+	 * serializado pelo JSON
+	 */
 	@JsonBackReference
 	@OneToMany(mappedBy = "cidade", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<UnidadeLaboratorio> listaUnidades;

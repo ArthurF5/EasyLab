@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,13 +22,8 @@ public class Exame implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_Exame")
 	private Integer id_Exame;
-
-	@Column(name = "exame")
 	private String exame;
-
-	@Column(name = "sigla")
 	private String sigla;
 	
 	/* Relacionamentos */

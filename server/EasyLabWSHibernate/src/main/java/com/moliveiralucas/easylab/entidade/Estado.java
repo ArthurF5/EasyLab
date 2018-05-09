@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,13 +22,8 @@ public class Estado implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_Estado")
 	private Integer id_Estado;
-
-	@Column(name = "estado")
 	private String estado;
-
-	@Column(name = "uf")
 	private String uf;
 
 	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/

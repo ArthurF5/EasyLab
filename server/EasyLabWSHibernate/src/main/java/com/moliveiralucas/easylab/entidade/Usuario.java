@@ -3,7 +3,6 @@ package com.moliveiralucas.easylab.entidade;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,18 +20,11 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_Usuario")
 	private Integer id_Usuario;
-
-	@Column(name = "usuario")
 	private String usuario;
-
-	@Column(name = "senha")
 	private String senha;
-
-	@Column(name = "email")
 	private String email;
-
+	
 	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
 	@JsonManagedReference
 	@ManyToMany(mappedBy = "usuariosDoPerfil")
