@@ -29,6 +29,7 @@ public class Permissao implements Serializable {
 
 	/* Relacionamento */
 	
+	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
 	@JsonManagedReference
 	@ManyToMany(mappedBy = "permissoesDoPerfil")
 	private List<PerfilUsuario> listaPerfil;

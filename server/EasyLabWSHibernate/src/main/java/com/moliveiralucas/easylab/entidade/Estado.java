@@ -32,7 +32,7 @@ public class Estado implements Serializable {
 	@Column(name = "uf")
 	private String uf;
 
-	/*JsonManagedReference - */
+	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
 	@JsonManagedReference
 	@OneToMany(mappedBy="estado", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Cidade> cidades;

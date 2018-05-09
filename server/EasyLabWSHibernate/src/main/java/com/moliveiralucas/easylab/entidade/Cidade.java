@@ -31,11 +31,13 @@ public class Cidade implements Serializable {
 	@Column(name = "cidade")
 	private String cidade;
 
+	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_Estado", referencedColumnName = "id_Estado", nullable = false)
 	private Estado estado;
 
+	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
 	@JsonBackReference
 	@OneToMany(mappedBy = "cidade", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<UnidadeLaboratorio> listaUnidades;

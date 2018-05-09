@@ -30,16 +30,20 @@ public class ExameUnidade implements Serializable {
 	private Double valor;
 
 	/* Relacionamentos */
+	
+	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_convenio", referencedColumnName = "id_convenio", nullable = false)
 	private Convenio convenios;
 
+	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_Exame", referencedColumnName = "id_Exame", nullable = false)
 	private Exame exames;
 
+	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
 	@JsonManagedReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_Unidadelaboratorio", referencedColumnName = "id_UnidadeLaboratorio", nullable = false)

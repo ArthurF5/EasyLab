@@ -30,6 +30,8 @@ public class Convenio implements Serializable {
 	private String convenio;
 
 	/* Relacionamentos */
+	
+	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
 	@JsonManagedReference
 	@OneToMany(mappedBy = "convenios", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ExameUnidade> listaExamesUnidade;

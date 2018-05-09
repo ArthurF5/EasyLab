@@ -30,6 +30,7 @@ public class Laboratorio implements Serializable {
 	private String laboratorio;
 
 	/* Relacionamentos */
+	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
 	@JsonManagedReference
 	@OneToMany(mappedBy="laboratorio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Laboratorio> laboratorios;

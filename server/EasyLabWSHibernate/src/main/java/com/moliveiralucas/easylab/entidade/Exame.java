@@ -34,6 +34,7 @@ public class Exame implements Serializable {
 	
 	/* Relacionamentos */
 	
+	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
 	@JsonManagedReference
 	@OneToMany(mappedBy="exames", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ExameUnidade> listaExames;

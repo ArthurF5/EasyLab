@@ -33,6 +33,7 @@ public class Usuario implements Serializable {
 	@Column(name = "email")
 	private String email;
 
+	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
 	@JsonManagedReference
 	@ManyToMany(mappedBy = "usuariosDoPerfil")
 	private List<PerfilUsuario> listaPerfilUsuario;

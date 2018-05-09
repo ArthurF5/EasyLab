@@ -36,11 +36,13 @@ public class PerfilUsuario implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Usuario usuario;
 	
+	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
 	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "usuariosDoPerfil", joinColumns = @JoinColumn(name = "id_PerfilUsuario"), inverseJoinColumns = @JoinColumn(name = "id_Usuario"))
 	private List<Usuario> usuariosDoPerfil;
 	
+	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
 	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "permissoesDoPerfil", joinColumns = @JoinColumn(name = "id_PerfilUsuario"), inverseJoinColumns = @JoinColumn(name = "id_Permissao"))
