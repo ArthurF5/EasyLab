@@ -31,10 +31,10 @@ public class PerfilUsuario implements Serializable {
 	@Column(name = "perfilUsuario")
 	private String perfilUsuario;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Usuario usuario;
 	
 	/* Relacionamentos */
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Usuario usuario;
 	
 	@JsonBackReference
 	@ManyToMany
@@ -49,10 +49,11 @@ public class PerfilUsuario implements Serializable {
 	public PerfilUsuario() {
 	}
 
-	public PerfilUsuario(Integer id_PerfilUsuario, String perfilUsuario) {
+	public PerfilUsuario(Integer id_PerfilUsuario, String perfilUsuario, Usuario usuario) {
 		super();
 		this.id_PerfilUsuario = id_PerfilUsuario;
 		this.perfilUsuario = perfilUsuario;
+		this.usuario = usuario;
 	}
 
 	public Integer getId_PerfilUsuario() {

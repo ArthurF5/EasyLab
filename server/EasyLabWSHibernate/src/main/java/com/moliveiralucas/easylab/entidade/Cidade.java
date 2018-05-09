@@ -43,10 +43,11 @@ public class Cidade implements Serializable {
 	public Cidade() {
 	}
 
-	public Cidade(Integer id_Cidade, String cidade) {
+	public Cidade(Integer id_Cidade, String cidade, Estado estado) {
 		super();
 		this.id_Cidade = id_Cidade;
 		this.cidade = cidade;
+		this.estado = estado;
 	}
 
 	public Integer getId_Cidade() {

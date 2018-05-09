@@ -48,10 +48,13 @@ public class ExameUnidade implements Serializable {
 	public ExameUnidade() {
 	}
 
-	public ExameUnidade(Integer id_ExameUnidade, Double valor) {
+	public ExameUnidade(Integer id_ExameUnidade, Double valor, Convenio convenio, Exame exame, UnidadeLaboratorio unidadeLaboratorio) {
 		super();
 		this.id_ExameUnidade = id_ExameUnidade;
 		this.valor = valor;
+		this.convenios = convenio;
+		this.exames = exame;
+		this.unidadesLaboratorio = unidadeLaboratorio;
 	}
 
 	public Integer getId_ExameUnidade() {
