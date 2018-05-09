@@ -19,4 +19,9 @@ public class LaboratorioService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ Laboratorio.class.getName()));
 	}
+	
+	public Laboratorio insert(Laboratorio obj) {
+		obj.setId_Laboratorio(null);
+		return repository.save(obj);
+	}
 }

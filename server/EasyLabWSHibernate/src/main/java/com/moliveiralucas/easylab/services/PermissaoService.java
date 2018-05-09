@@ -19,4 +19,9 @@ public class PermissaoService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ Permissao.class.getName()));
 	}
+	
+	public Permissao insert(Permissao obj) {
+		obj.setId_Permissao(null);
+		return repository.save(obj);
+	}
 }

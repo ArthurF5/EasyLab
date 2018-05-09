@@ -20,4 +20,8 @@ public class ExameUnidadeService {
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ ExameUnidade.class.getName()));
 	}
 
+	public ExameUnidade insert(ExameUnidade obj) {
+		obj.setId_ExameUnidade(null);
+		return repository.save(obj);
+	}
 }

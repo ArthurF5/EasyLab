@@ -19,4 +19,9 @@ public class PerfilUsuarioService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ PerfilUsuario.class.getName()));
 	}
+
+	public PerfilUsuario insert(PerfilUsuario obj) {
+		obj.setId_PerfilUsuario(null);
+		return repository.save(obj);
+	}
 }

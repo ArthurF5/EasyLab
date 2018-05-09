@@ -19,4 +19,9 @@ public class ExameService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ Exame.class.getName()));
 	}
+	
+	public Exame insert(Exame obj) {
+		obj.setId_Exame(null);
+		return repository.save(obj);
+	}
 }

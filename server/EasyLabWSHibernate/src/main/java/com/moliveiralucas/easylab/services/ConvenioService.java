@@ -19,4 +19,9 @@ public class ConvenioService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ Convenio.class.getName()));
 	}
+
+	public Convenio insert(Convenio obj) {
+		obj.setId_Convenio(null);
+		return repository.save(obj);
+	}
 }

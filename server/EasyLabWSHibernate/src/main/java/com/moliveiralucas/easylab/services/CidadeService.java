@@ -1,6 +1,5 @@
 package com.moliveiralucas.easylab.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,8 @@ public class CidadeService {
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ Cidade.class.getName()));
 	}
 
-	public List<Cidade> findByEstado(Integer id_Estado) {
-		return repository.findCidades(id_Estado);
+	public Cidade insert(Cidade obj) {
+		obj.setId_Cidade(null);
+		return repository.save(obj);
 	}
 }

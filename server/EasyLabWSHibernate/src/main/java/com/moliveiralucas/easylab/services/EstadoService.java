@@ -20,4 +20,9 @@ public class EstadoService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: " + Estado.class.getName()));
 	}
+	
+	public Estado insert(Estado obj) {
+		obj.setId_Estado(null);
+		return repository.save(obj);
+	}
 }

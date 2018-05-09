@@ -7,5 +7,4 @@ import com.moliveiralucas.easylab.domain.UnidadeLaboratorio;
 
 @Repository
 public interface UnidadeLaboratorioRepository extends JpaRepository<UnidadeLaboratorio, Integer> {
-	
 }
