@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.moliveiralucas.easylab.entidade.Cidade;
-import com.moliveiralucas.easylab.services.CidadeService;
+import com.moliveiralucas.easylab.entidade.Exame;
+import com.moliveiralucas.easylab.services.ExameService;
 
 @RestController
-@RequestMapping(value = "/cidades")
-public class CidadeControle {
-	
+@RequestMapping(value = "/exame")
+public class ExameControle {
+
 	@Autowired
-	private CidadeService mCidadeService;
+	private ExameService mExameService;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
-		Cidade obj = mCidadeService.buscar(id);
+		Exame obj = mExameService.buscar(id);
 		return ResponseEntity.ok(obj);
 	}
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.moliveiralucas.easylab.entidade.Permissao;
 
 @Repository
-public interface PermissaoPerssist extends JpaRepository<Permissao, Integer> {
+public interface PermissaoPersist extends JpaRepository<Permissao, Integer> {
 
 }
