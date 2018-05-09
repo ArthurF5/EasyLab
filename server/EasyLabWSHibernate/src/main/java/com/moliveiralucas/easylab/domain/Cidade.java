@@ -1,4 +1,4 @@
-package com.moliveiralucas.easylab.entidade;
+package com.moliveiralucas.easylab.domain;
 
 import java.io.Serializable;
 
@@ -17,20 +17,20 @@ public class Cidade implements Serializable {
 	private static final long serialVersionUID = 2353476803784179445L;
 
 	/* ATRIBUTOS BASICOS */
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_Cidade;
 	private String cidade;
 
 	/* RELACIONAMENTOS */
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_estado")
 	private Estado estado;
 
 	/* CONSTRUTORES */
-	
+
 	public Cidade() {
 	}
 
@@ -41,8 +41,8 @@ public class Cidade implements Serializable {
 		this.estado = estado;
 	}
 
-	/*GETTERS AND SETTERS*/
-	
+	/* GETTERS AND SETTERS */
+
 	public Integer getId_Cidade() {
 		return id_Cidade;
 	}
@@ -68,7 +68,7 @@ public class Cidade implements Serializable {
 	}
 
 	/* HASCOD AND EQUALS */
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

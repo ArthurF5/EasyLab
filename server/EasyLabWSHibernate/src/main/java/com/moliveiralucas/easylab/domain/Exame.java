@@ -1,4 +1,4 @@
-package com.moliveiralucas.easylab.entidade;
+package com.moliveiralucas.easylab.domain;
 
 import java.io.Serializable;
 

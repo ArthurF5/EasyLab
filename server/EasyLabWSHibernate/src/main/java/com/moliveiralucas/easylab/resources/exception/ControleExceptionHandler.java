@@ -1,4 +1,4 @@
-package com.moliveiralucas.easylab.controle.exception;
+package com.moliveiralucas.easylab.resources.exception;
 
 import javax.servlet.http.HttpServletRequest;
 
