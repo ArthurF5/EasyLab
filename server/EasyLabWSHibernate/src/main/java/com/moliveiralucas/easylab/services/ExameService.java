@@ -5,19 +5,18 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.moliveiralucas.easylab.domain.Estado;
-import com.moliveiralucas.easylab.repositories.EstadoRepository;
+import com.moliveiralucas.easylab.domain.Exame;
+import com.moliveiralucas.easylab.repositories.ExameRepository;
 import com.moliveiralucas.easylab.services.exceptions.ObjectNotFoundException;
 
 @Service
-public class EstadoService {
-
+public class ExameService {
 	@Autowired
-	private EstadoRepository repository;
+	private ExameRepository repository;
 
-	public Estado buscar(Integer id) {
-		Optional<Estado> obj = repository.findById(id);
+	public Exame buscar(Integer id) {
+		Optional<Exame> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Objeto não encontrado! ID: " + id + ", Tipo: " + Estado.class.getName()));
+				"Objeto não encontrado! ID: " + id + ", Tipo: "+ Exame.class.getName()));
 	}
 }

@@ -12,7 +12,7 @@ import com.moliveiralucas.easylab.services.CidadeService;
 
 @RestController
 @RequestMapping(value = "/cidades")
-public class CidadeResource {
+public class LaboratorioResource {
 	@Autowired
 	private CidadeService service;
 	
