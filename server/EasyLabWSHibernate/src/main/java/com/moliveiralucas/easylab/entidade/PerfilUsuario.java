@@ -1,20 +1,17 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "perfilUsuario")
@@ -22,42 +19,36 @@ public class PerfilUsuario implements Serializable {
 
 	private static final long serialVersionUID = 8307462564281466586L;
 
+	/* ATRIBUTOS BASICOS */
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_PerfilUsuario;
 	private String perfilUsuario;
 
-	/* Relacionamentos */
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Usuario usuario;
+	/* RELACIONAMENTOS */
 
-	/*
-	 * JsonBackReference - Quer dizer que o 'relacionamento' não pode ser
-	 * serializado pelo JSON
-	 */
-	@JsonBackReference
 	@ManyToMany
-	@JoinTable(name = "usuariosDoPerfil", joinColumns = @JoinColumn(name = "id_PerfilUsuario"), inverseJoinColumns = @JoinColumn(name = "id_Usuario"))
-	private List<Usuario> usuariosDoPerfil;
+	@JoinTable(name = "usuarios", 
+			joinColumns = @JoinColumn(name = "id_PerfilUsuario"),
+			inverseJoinColumns = @JoinColumn(name = "id_Usuario"))
+	private List<Usuario> usuarios = new ArrayList<>();
 
-	/*
-	 * JsonBackReference - Quer dizer que o 'relacionamento' não pode ser
-	 * serializado pelo JSON
-	 */
-	@JsonBackReference
 	@ManyToMany
-	@JoinTable(name = "permissoesDoPerfil", joinColumns = @JoinColumn(name = "id_PerfilUsuario"), inverseJoinColumns = @JoinColumn(name = "id_Permissao"))
-	private List<Permissao> permissoesDoPerfil;
+	@JoinTable(name = "permissoes", 
+			joinColumns = @JoinColumn(name = "id_PerfilUsuario"),
+			inverseJoinColumns = @JoinColumn(name = "id_Permissao"))
+	private List<Permissao> permissoes = new ArrayList<>();
 
-	public PerfilUsuario() {
-	}
+	/* CONSTRUTORES */
 
-	public PerfilUsuario(Integer id_PerfilUsuario, String perfilUsuario, Usuario usuario) {
+	public PerfilUsuario(Integer id_PerfilUsuario, String perfilUsuario) {
 		super();
 		this.id_PerfilUsuario = id_PerfilUsuario;
 		this.perfilUsuario = perfilUsuario;
-		this.usuario = usuario;
 	}
+
+	/* GETTERS AND SETTERS */
 
 	public Integer getId_PerfilUsuario() {
 		return id_PerfilUsuario;
@@ -75,29 +66,23 @@ public class PerfilUsuario implements Serializable {
 		this.perfilUsuario = perfilUsuario;
 	}
 
-	public List<Usuario> getUsuariosDoPerfil() {
-		return usuariosDoPerfil;
+	public List<Usuario> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setUsuariosDoPerfil(List<Usuario> usuariosDoPerfil) {
-		this.usuariosDoPerfil = usuariosDoPerfil;
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public List<Permissao> getPermissoes() {
+		return permissoes;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setPermissoes(List<Permissao> permissoes) {
+		this.permissoes = permissoes;
 	}
 
-	public List<Permissao> getPermissoesDoPerfil() {
-		return permissoesDoPerfil;
-	}
-
-	public void setPermissoesDoPerfil(List<Permissao> permissoesDoPerfil) {
-		this.permissoesDoPerfil = permissoesDoPerfil;
-	}
+	/* HASCODE AND EQUALS */
 
 	@Override
 	public int hashCode() {
@@ -123,4 +108,5 @@ public class PerfilUsuario implements Serializable {
 			return false;
 		return true;
 	}
+
 }

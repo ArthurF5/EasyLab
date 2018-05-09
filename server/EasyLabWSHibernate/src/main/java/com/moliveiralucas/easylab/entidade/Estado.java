@@ -1,18 +1,17 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "estado")
@@ -20,17 +19,22 @@ public class Estado implements Serializable {
 
 	private static final long serialVersionUID = 2342264543880213564L;
 
+	/* ATRIBUTOS BASICOS */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_Estado;
 	private String estado;
 	private String uf;
+	
+	/* RELACIONAMENTOS */
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "estado")
+	private List<Cidade> cidades = new ArrayList<>();
 
-	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
-	@JsonManagedReference
-	@OneToMany(mappedBy="estado", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	private List<Cidade> cidades;
-
+	/* CONSTRUTORES */
+	
 	public Estado() {
 	}
 
@@ -41,18 +45,12 @@ public class Estado implements Serializable {
 		this.uf = uf;
 	}
 	
+	/*GETTERS AND SETTERS*/
+	
 	public Integer getId_Estado() {
 		return id_Estado;
 	}
 
-	public List<Cidade> getCidades() {
-		return cidades;
-	}
-	
-	public void setCidades(List<Cidade> cidades) {
-		this.cidades = cidades;
-	}
-	
 	public void setId_Estado(Integer id_Estado) {
 		this.id_Estado = id_Estado;
 	}
@@ -72,6 +70,16 @@ public class Estado implements Serializable {
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
+
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
+	}
+	
+	/* HASCOD AND EQUALS */
 
 	@Override
 	public int hashCode() {

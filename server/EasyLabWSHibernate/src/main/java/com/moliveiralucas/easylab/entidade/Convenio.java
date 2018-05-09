@@ -1,18 +1,12 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "convenio")
@@ -20,50 +14,44 @@ public class Convenio implements Serializable {
 
 	private static final long serialVersionUID = 8229806965918133158L;
 
+	/* ATRIBUTOS BASICOS */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_Convenio;
 	private String convenio;
 
-	/* Relacionamentos */
+	/* RELACIONAMENTOS */
 	
-	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
-	@JsonManagedReference
-	@OneToMany(mappedBy = "convenios", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<ExameUnidade> listaExamesUnidade;
+	
+	
+	/* CONSTRUTORES */
 
 	public Convenio() {
 	}
-
+	
 	public Convenio(Integer id_Convenio, String convenio) {
 		super();
 		this.id_Convenio = id_Convenio;
 		this.convenio = convenio;
 	}
-
+	
+	/*GETTERS AND SETTERS*/
+	
 	public Integer getId_Convenio() {
 		return id_Convenio;
 	}
-
 	public void setId_Convenio(Integer id_Convenio) {
 		this.id_Convenio = id_Convenio;
 	}
-
 	public String getConvenio() {
 		return convenio;
 	}
-
 	public void setConvenio(String convenio) {
 		this.convenio = convenio;
 	}
-
-	public List<ExameUnidade> getListaExamesUnidade() {
-		return listaExamesUnidade;
-	}
-
-	public void setListaExamesUnidade(List<ExameUnidade> listaExamesUnidade) {
-		this.listaExamesUnidade = listaExamesUnidade;
-	}
+	
+	/* HASCOD AND EQUALS */
 
 	@Override
 	public int hashCode() {
@@ -89,5 +77,4 @@ public class Convenio implements Serializable {
 			return false;
 		return true;
 	}
-
 }

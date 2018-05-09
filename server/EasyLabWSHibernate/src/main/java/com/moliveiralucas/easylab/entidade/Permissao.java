@@ -1,6 +1,7 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,25 +11,25 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "permissao")
 public class Permissao implements Serializable {
 
 	private static final long serialVersionUID = -6087202293333119859L;
 
+	/* ATRIBUTOS BASICOS */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_Permissao;
 	private String permissao;
 
-	/* Relacionamento */
+	/* RELACIONAMENTOS */
 	
-	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
-	@JsonManagedReference
-	@ManyToMany(mappedBy = "permissoesDoPerfil")
-	private List<PerfilUsuario> listaPerfil;
+	@ManyToMany(mappedBy = "permissoes")
+	private List<PerfilUsuario> permissaoPerfil = new ArrayList<>();
+	
+	/* CONSTRUTORES */
 	
 	public Permissao() {
 	}
@@ -38,7 +39,9 @@ public class Permissao implements Serializable {
 		this.id_Permissao = id_Permissao;
 		this.permissao = permissao;
 	}
-	
+
+	/*GETTERS AND SETTERS*/
+
 	public Integer getId_Permissao() {
 		return id_Permissao;
 	}
@@ -55,14 +58,16 @@ public class Permissao implements Serializable {
 		this.permissao = permissao;
 	}
 
-	public List<PerfilUsuario> getListaPerfil() {
-		return listaPerfil;
+	public List<PerfilUsuario> getPermissaoPerfil() {
+		return permissaoPerfil;
 	}
 
-	public void setListaPerfil(List<PerfilUsuario> listaPerfil) {
-		this.listaPerfil = listaPerfil;
+	public void setPermissaoPerfil(List<PerfilUsuario> permissaoPerfil) {
+		this.permissaoPerfil = permissaoPerfil;
 	}
-
+	
+	/* HASCOD AND EQUALS */
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

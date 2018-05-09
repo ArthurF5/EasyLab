@@ -1,20 +1,14 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "cidade")
@@ -22,28 +16,21 @@ public class Cidade implements Serializable {
 
 	private static final long serialVersionUID = 2353476803784179445L;
 
+	/* ATRIBUTOS BASICOS */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_Cidade;
 	private String cidade;
 
-	/*
-	 * JsonBackReference - Quer dizer que o 'relacionamento' não pode ser
-	 * serializado pelo JSON
-	 */
-	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_Estado", referencedColumnName = "id_Estado", nullable = false)
+	/* RELACIONAMENTOS */
+	
+	@ManyToOne
+	@JoinColumn(name = "id_estado")
 	private Estado estado;
 
-	/*
-	 * JsonBackReference - Quer dizer que o 'relacionamento' não pode ser
-	 * serializado pelo JSON
-	 */
-	@JsonBackReference
-	@OneToMany(mappedBy = "cidade", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<UnidadeLaboratorio> listaUnidades;
-
+	/* CONSTRUTORES */
+	
 	public Cidade() {
 	}
 
@@ -54,6 +41,8 @@ public class Cidade implements Serializable {
 		this.estado = estado;
 	}
 
+	/*GETTERS AND SETTERS*/
+	
 	public Integer getId_Cidade() {
 		return id_Cidade;
 	}
@@ -78,14 +67,8 @@ public class Cidade implements Serializable {
 		this.estado = estado;
 	}
 
-	public List<UnidadeLaboratorio> getListaUnidades() {
-		return listaUnidades;
-	}
-
-	public void setListaUnidades(List<UnidadeLaboratorio> listaUnidades) {
-		this.listaUnidades = listaUnidades;
-	}
-
+	/* HASCOD AND EQUALS */
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

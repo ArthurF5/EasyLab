@@ -1,6 +1,7 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,13 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 5662859459464815266L;
+
+	/* ATRIBUTOS BASICOS */
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +25,13 @@ public class Usuario implements Serializable {
 	private String usuario;
 	private String senha;
 	private String email;
-	
-	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
-	@JsonManagedReference
-	@ManyToMany(mappedBy = "usuariosDoPerfil")
-	private List<PerfilUsuario> listaPerfilUsuario;
+
+	/* RELACIONAMENTOS */
+
+	@ManyToMany(mappedBy = "usuarios")
+	private List<PerfilUsuario> perfilDeUsuario = new ArrayList<>();
+
+	/* CONSTRUTORES */
 
 	public Usuario() {
 	}
@@ -40,6 +43,8 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 		this.email = email;
 	}
+
+	/* GETTERS AND SETTERS */
 
 	public Integer getId_Usuario() {
 		return id_Usuario;
@@ -73,14 +78,16 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public List<PerfilUsuario> getListaPerfilUsuario() {
-		return listaPerfilUsuario;
+	public List<PerfilUsuario> getPerfilDeUsuario() {
+		return perfilDeUsuario;
 	}
 
-	public void setListaPerfilUsuario(List<PerfilUsuario> listaPerfilUsuario) {
-		this.listaPerfilUsuario = listaPerfilUsuario;
+	public void setPerfilDeUsuario(List<PerfilUsuario> perfilDeUsuario) {
+		this.perfilDeUsuario = perfilDeUsuario;
 	}
 
+	/* HASCOD AND EQUALS */
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

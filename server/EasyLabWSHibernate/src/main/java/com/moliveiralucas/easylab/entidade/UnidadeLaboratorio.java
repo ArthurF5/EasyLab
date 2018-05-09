@@ -1,26 +1,22 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "unidadeLaboratorio")
 public class UnidadeLaboratorio implements Serializable {
 
 	private static final long serialVersionUID = 2618028083818723170L;
+
+	/* ATRIBUTOS BASICOS */
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,20 +26,17 @@ public class UnidadeLaboratorio implements Serializable {
 	private String complemento;
 	private String numero;
 
-	/* Relacionamentos */
+	/* RELACIONAMENTOS */
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_cidade", referencedColumnName = "id_cidade", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "id_cidade")
 	private Cidade cidade;
 
-	/* JsonBackReference - Quer dizer que o 'relacionamento' não pode ser serializado pelo JSON*/
-	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_Laboratorio", referencedColumnName = "id_Laboratorio", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "id_Laboratorio")
 	private Laboratorio laboratorio;
-
-	@OneToMany(mappedBy = "unidadesLaboratorio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<ExameUnidade> unidadesLaboratorio;
+	
+	/* CONSTRUTORES */
 
 	public UnidadeLaboratorio() {
 	}
@@ -56,9 +49,12 @@ public class UnidadeLaboratorio implements Serializable {
 		this.logradouro = logradouro;
 		this.complemento = complemento;
 		this.numero = numero;
-		this.cidade = cidade;
-		this.laboratorio = laboratorio;
+		this.setCidade(cidade);
+		this.setLaboratorio(laboratorio);
 	}
+
+	/* GETTERS AND SETTERS */
+
 
 	public Integer getId_UnidadeLaboratorio() {
 		return id_UnidadeLaboratorio;
@@ -116,36 +112,5 @@ public class UnidadeLaboratorio implements Serializable {
 		this.laboratorio = laboratorio;
 	}
 	
-	public List<ExameUnidade> getUnidadesLaboratorio() {
-		return unidadesLaboratorio;
-	}
-
-	public void setUnidadesLaboratorio(List<ExameUnidade> unidadesLaboratorio) {
-		this.unidadesLaboratorio = unidadesLaboratorio;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id_UnidadeLaboratorio == null) ? 0 : id_UnidadeLaboratorio.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		UnidadeLaboratorio other = (UnidadeLaboratorio) obj;
-		if (id_UnidadeLaboratorio == null) {
-			if (other.id_UnidadeLaboratorio != null)
-				return false;
-		} else if (!id_UnidadeLaboratorio.equals(other.id_UnidadeLaboratorio))
-			return false;
-		return true;
-	}
+	/* HASCOD AND EQUALS */
 }

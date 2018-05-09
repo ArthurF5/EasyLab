@@ -1,18 +1,12 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "exame")
@@ -20,28 +14,21 @@ public class Exame implements Serializable {
 
 	private static final long serialVersionUID = 8566316793255132713L;
 
+	/* ATRIBUTOS BASICOS */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_Exame;
 	private String exame;
 	private String sigla;
+
+	/* RELACIONAMENTOS */
 	
-	/* Relacionamentos */
 	
-	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
-	@JsonManagedReference
-	@OneToMany(mappedBy="exames", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<ExameUnidade> listaExames;
-
-	public List<ExameUnidade> getListaExames() {
-		return listaExames;
+	/* CONSTRUTORES */
+	
+	public Exame() {
 	}
-
-	public void setListaExames(List<ExameUnidade> listaExames) {
-		this.listaExames = listaExames;
-	}
-
-	public Exame () {}
 	
 	public Exame(Integer id_Exame, String exame, String sigla) {
 		super();
@@ -49,31 +36,30 @@ public class Exame implements Serializable {
 		this.exame = exame;
 		this.sigla = sigla;
 	}
+
+	/*GETTERS AND SETTERS*/
 	
 	public Integer getId_Exame() {
 		return id_Exame;
 	}
-
 	public void setId_Exame(Integer id_Exame) {
 		this.id_Exame = id_Exame;
 	}
-
 	public String getExame() {
 		return exame;
 	}
-
 	public void setExame(String exame) {
 		this.exame = exame;
 	}
-
 	public String getSigla() {
 		return sigla;
 	}
-
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
 	}
 
+	/* HASCOD AND EQUALS */
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

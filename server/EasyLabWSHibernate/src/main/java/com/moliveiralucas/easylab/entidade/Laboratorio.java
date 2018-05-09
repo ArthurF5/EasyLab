@@ -1,18 +1,16 @@
 package com.moliveiralucas.easylab.entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "laboratorio")
@@ -20,26 +18,30 @@ public class Laboratorio implements Serializable {
 
 	private static final long serialVersionUID = 6761472208054446378L;
 
+	/* ATRIBUTOS BASICOS */
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_Laboratorio;
 	private String laboratorio;
 
-	/* Relacionamentos */
-	
-	/*JsonManagedReference - Quer dizer se o 'relacionamento' pode ser serializado pelo JSON*/
-	@JsonManagedReference
-	@OneToMany(mappedBy="laboratorio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Laboratorio> laboratorios;
-	
+	/* RELACIONAMENTOS */
+
+	@OneToMany(mappedBy= "laboratorio", cascade=CascadeType.ALL)
+	private List<UnidadeLaboratorio> unidades = new ArrayList<>();
+
+	/* CONSTRUTORES */
+
 	public Laboratorio() {
 	}
-	
+
 	public Laboratorio(Integer id_Laboratorio, String laboratorio) {
 		super();
 		this.id_Laboratorio = id_Laboratorio;
 		this.laboratorio = laboratorio;
 	}
+
+	/* GETTERS AND SETTERS */
 
 	public Integer getId_Laboratorio() {
 		return id_Laboratorio;
@@ -56,6 +58,16 @@ public class Laboratorio implements Serializable {
 	public void setLaboratorio(String laboratorio) {
 		this.laboratorio = laboratorio;
 	}
+
+	public List<UnidadeLaboratorio> getUnidades() {
+		return unidades;
+	}
+
+	public void setUnidades(List<UnidadeLaboratorio> unidades) {
+		this.unidades = unidades;
+	}
+	
+	/* HASCODE AND EQUALS */
 
 	@Override
 	public int hashCode() {
@@ -80,13 +92,5 @@ public class Laboratorio implements Serializable {
 		} else if (!id_Laboratorio.equals(other.id_Laboratorio))
 			return false;
 		return true;
-	}
-
-	public List<Laboratorio> getLaboratorios() {
-		return laboratorios;
-	}
-
-	public void setLaboratorios(List<Laboratorio> laboratorios) {
-		this.laboratorios = laboratorios;
 	}
 }
