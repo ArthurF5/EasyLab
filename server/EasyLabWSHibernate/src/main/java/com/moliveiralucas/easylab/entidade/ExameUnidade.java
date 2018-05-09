@@ -33,6 +33,10 @@ public class ExameUnidade implements Serializable {
 	@JoinColumn(name = "id_exame")
 	private Exame exame;
 
+	@ManyToOne
+	@JoinColumn(name="id_UnidadeLaboratorio")
+	private UnidadeLaboratorio unidadeLaboratorio;
+	
 	/* CONSTRUTORES */
 	public ExameUnidade() {
 	}
