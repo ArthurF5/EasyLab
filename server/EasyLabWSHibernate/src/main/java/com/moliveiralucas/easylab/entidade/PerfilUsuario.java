@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "perfilUsuario")
 public class PerfilUsuario implements Serializable {
@@ -34,10 +36,12 @@ public class PerfilUsuario implements Serializable {
 	
 	/* Relacionamentos */
 	
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "usuariosDoPerfil", joinColumns = @JoinColumn(name = "id_PerfilUsuario"), inverseJoinColumns = @JoinColumn(name = "id_Usuario"))
 	private List<Usuario> usuariosDoPerfil;
 	
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "permissoesDoPerfil", joinColumns = @JoinColumn(name = "id_PerfilUsuario"), inverseJoinColumns = @JoinColumn(name = "id_Permissao"))
 	private List<Permissao> permissoesDoPerfil;

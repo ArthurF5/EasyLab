@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "cidade")
 public class Cidade implements Serializable {
@@ -29,10 +31,12 @@ public class Cidade implements Serializable {
 	@Column(name = "cidade")
 	private String cidade;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_Estado", referencedColumnName = "id_Estado", nullable = false)
 	private Estado estado;
 
+	@JsonBackReference
 	@OneToMany(mappedBy = "cidade", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<UnidadeLaboratorio> listaUnidades;
 

@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "exameUnidade")
 public class ExameUnidade implements Serializable {
@@ -27,14 +30,17 @@ public class ExameUnidade implements Serializable {
 	private Double valor;
 
 	/* Relacionamentos */
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_convenio", referencedColumnName = "id_convenio", nullable = false)
 	private Convenio convenios;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_Exame", referencedColumnName = "id_Exame", nullable = false)
 	private Exame exames;
 
+	@JsonManagedReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_Unidadelaboratorio", referencedColumnName = "id_UnidadeLaboratorio", nullable = false)
 	private UnidadeLaboratorio unidadesLaboratorio;

@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "estado")
 public class Estado implements Serializable {
@@ -30,6 +32,8 @@ public class Estado implements Serializable {
 	@Column(name = "uf")
 	private String uf;
 
+	/*JsonManagedReference - */
+	@JsonManagedReference
 	@OneToMany(mappedBy="estado", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Cidade> cidades;
 

@@ -16,7 +16,7 @@ public class EstadoControle {
 
 	@Autowired
 	private EstadoService mEstadoService;
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Estado obj = mEstadoService.buscar(id);

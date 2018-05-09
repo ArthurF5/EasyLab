@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "exame")
 public class Exame implements Serializable {
@@ -32,6 +34,7 @@ public class Exame implements Serializable {
 	
 	/* Relacionamentos */
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy="exames", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ExameUnidade> listaExames;
 

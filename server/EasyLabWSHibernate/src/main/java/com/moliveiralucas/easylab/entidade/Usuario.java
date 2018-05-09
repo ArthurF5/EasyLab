@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
@@ -31,6 +33,7 @@ public class Usuario implements Serializable {
 	@Column(name = "email")
 	private String email;
 
+	@JsonManagedReference
 	@ManyToMany(mappedBy = "usuariosDoPerfil")
 	private List<PerfilUsuario> listaPerfilUsuario;
 

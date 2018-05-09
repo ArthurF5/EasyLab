@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "permissao")
 public class Permissao implements Serializable {
@@ -27,6 +29,7 @@ public class Permissao implements Serializable {
 
 	/* Relacionamento */
 	
+	@JsonManagedReference
 	@ManyToMany(mappedBy = "permissoesDoPerfil")
 	private List<PerfilUsuario> listaPerfil;
 	
