@@ -2,6 +2,7 @@ package com.moliveiralucas.easylab.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.moliveiralucas.easylab.domain.Laboratorio;
+import com.moliveiralucas.easylab.dto.LaboratorioDTO;
 import com.moliveiralucas.easylab.services.LaboratorioService;
 
 @RestController
@@ -49,8 +51,9 @@ public class LaboratorioResource {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Laboratorio>> findAll() {
+	public ResponseEntity<List<LaboratorioDTO>> findAll() {
 		List<Laboratorio> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+		List<LaboratorioDTO> listDto = list.stream().map(obj -> new LaboratorioDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDto);
 	}
 }
