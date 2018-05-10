@@ -3,10 +3,12 @@ package com.moliveiralucas.easylab.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.moliveiralucas.easylab.domain.Laboratorio;
 import com.moliveiralucas.easylab.repositories.LaboratorioRepository;
+import com.moliveiralucas.easylab.services.exceptions.DataIntegrityException;
 import com.moliveiralucas.easylab.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -27,5 +29,13 @@ public class LaboratorioService {
 
 	public Laboratorio update(Laboratorio obj) {
 		return repository.save(obj);
+	}
+	
+	public void delete(Integer id) {
+		try {
+			repository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não foi possível excluir o Laboratorio");
+		}
 	}
 }
