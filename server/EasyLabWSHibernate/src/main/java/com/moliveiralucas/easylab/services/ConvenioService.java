@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.moliveiralucas.easylab.domain.Convenio;
+import com.moliveiralucas.easylab.dto.ConvenioDTO;
 import com.moliveiralucas.easylab.repositories.ConvenioRepository;
 import com.moliveiralucas.easylab.services.exceptions.DataIntegrityException;
 import com.moliveiralucas.easylab.services.exceptions.ObjectNotFoundException;
@@ -50,5 +51,9 @@ public class ConvenioService {
 	public Page<Convenio> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repository.findAll(pageRequest);
+	}
+	
+	public Convenio fromDTO(ConvenioDTO objDto) {
+		return new Convenio(objDto.getId_Convenio(), objDto.getConvenio());
 	}
 }

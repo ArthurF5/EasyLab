@@ -26,7 +26,7 @@ public class Cidade implements Serializable {
 	/* RELACIONAMENTOS */
 
 	@ManyToOne
-	@JoinColumn(name = "id_estado")
+	@JoinColumn(name = "id_Estado", referencedColumnName = "id_Estado", nullable = false)
 	private Estado estado;
 
 	/* CONSTRUTORES */

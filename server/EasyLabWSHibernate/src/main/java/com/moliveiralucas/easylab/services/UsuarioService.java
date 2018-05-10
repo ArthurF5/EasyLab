@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.moliveiralucas.easylab.domain.Usuario;
+import com.moliveiralucas.easylab.dto.UsuarioDTO;
 import com.moliveiralucas.easylab.repositories.UsuarioRepository;
 import com.moliveiralucas.easylab.services.exceptions.DataIntegrityException;
 import com.moliveiralucas.easylab.services.exceptions.ObjectNotFoundException;
@@ -50,5 +51,9 @@ public class UsuarioService {
 	public Page<Usuario> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repository.findAll(pageRequest);
+	}
+	
+	public Usuario fromDTO(UsuarioDTO objDto) {
+		return new Usuario(objDto.getId_Usuario(), objDto.getUsuario(), objDto.getSenha(), objDto.getEmail());
 	}
 }

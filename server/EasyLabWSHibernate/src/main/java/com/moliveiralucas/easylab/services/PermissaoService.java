@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.moliveiralucas.easylab.domain.Permissao;
+import com.moliveiralucas.easylab.dto.PermissaoDTO;
 import com.moliveiralucas.easylab.repositories.PermissaoRepository;
 import com.moliveiralucas.easylab.services.exceptions.DataIntegrityException;
 import com.moliveiralucas.easylab.services.exceptions.ObjectNotFoundException;
@@ -50,5 +51,9 @@ public class PermissaoService {
 	public Page<Permissao> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repository.findAll(pageRequest);
+	}
+		
+	public Permissao fromDTO(PermissaoDTO objDto) {
+		return new Permissao(objDto.getId_Permissao(), objDto.getPermissao());
 	}
 }

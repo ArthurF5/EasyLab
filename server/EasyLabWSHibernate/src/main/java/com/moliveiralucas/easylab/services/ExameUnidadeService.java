@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.moliveiralucas.easylab.domain.ExameUnidade;
+import com.moliveiralucas.easylab.dto.ExameUnidadeDTO;
 import com.moliveiralucas.easylab.repositories.ExameUnidadeRepository;
 import com.moliveiralucas.easylab.services.exceptions.DataIntegrityException;
 import com.moliveiralucas.easylab.services.exceptions.ObjectNotFoundException;
@@ -50,5 +51,9 @@ public class ExameUnidadeService {
 	public Page<ExameUnidade> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repository.findAll(pageRequest);
+	}
+		
+	public ExameUnidade fromDTO(ExameUnidadeDTO objDto) {
+		return new ExameUnidade(objDto.getId_ExameUnidade(), objDto.getValor(), objDto.getConvenio(), objDto.getExame());
 	}
 }

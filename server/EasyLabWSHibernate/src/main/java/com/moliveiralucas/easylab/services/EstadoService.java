@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.moliveiralucas.easylab.domain.Estado;
+import com.moliveiralucas.easylab.dto.EstadoDTO;
 import com.moliveiralucas.easylab.repositories.EstadoRepository;
 import com.moliveiralucas.easylab.services.exceptions.DataIntegrityException;
 import com.moliveiralucas.easylab.services.exceptions.ObjectNotFoundException;
@@ -51,5 +52,9 @@ public class EstadoService {
 	public Page<Estado> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repository.findAll(pageRequest);
+	}
+		
+	public Estado fromDTO(EstadoDTO objDto) {
+		return new Estado(objDto.getId_Estado(), objDto.getEstado(), objDto.getUf());
 	}
 }

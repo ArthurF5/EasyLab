@@ -2,20 +2,40 @@ package com.moliveiralucas.easylab.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.moliveiralucas.easylab.domain.Cidade;
 import com.moliveiralucas.easylab.domain.Laboratorio;
 import com.moliveiralucas.easylab.domain.UnidadeLaboratorio;
+
+import org.hibernate.validator.constraints.Length;
 
 public class UnidadeLaboratorioDTO implements Serializable{
 	
 	private static final long serialVersionUID = 6376636789901540368L;
 	
 	private Integer id_UnidadeLaboratorio;
+
+	@NotEmpty(message = "Preenchimento obrigatório!")
+	@Length(min = 3, max = 50, message = "O campo deve conter entre 3 e 50 caracteres")
 	private String nomeUnidade;
+
+	@NotEmpty(message = "Preenchimento obrigatório!")
+	@Length(min = 3, max = 100, message = "O campo deve conter entre 3 e 100 caracteres")
 	private String logradouro;
+
+	@NotEmpty(message = "Preenchimento obrigatório!")
+	@Length(min = 3, max = 50, message = "O campo deve conter entre 3 e 50 caracteres")
 	private String complemento;
+
+	@NotEmpty(message = "Preenchimento obrigatório!")
+	@Length(min = 1, max = 6, message = "O campo deve conter entre 1 e 6 caracteres")
 	private String numero;
+
+	@NotEmpty(message = "Preenchimento obrigatório!")
 	private Cidade cidade;
+
+	@NotEmpty(message = "Preenchimento obrigatório!")
 	private Laboratorio laboratorio;
 	
 	public UnidadeLaboratorioDTO() {
