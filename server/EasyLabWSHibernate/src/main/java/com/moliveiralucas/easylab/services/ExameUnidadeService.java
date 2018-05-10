@@ -1,5 +1,6 @@
 package com.moliveiralucas.easylab.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,9 @@ public class ExameUnidadeService {
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não foi possivel excluir o Exame da Unidade");
 		}
+	}
+
+	public List<ExameUnidade> findAll() {
+		return repository.findAll();
 	}
 }

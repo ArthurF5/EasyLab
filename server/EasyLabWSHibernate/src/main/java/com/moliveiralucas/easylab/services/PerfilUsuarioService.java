@@ -1,5 +1,6 @@
 package com.moliveiralucas.easylab.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,9 @@ public class PerfilUsuarioService {
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não foi possível excluir o Perfil do Usuario");
 		}
+	}
+
+	public List<PerfilUsuario> findAll() {
+		return repository.findAll();
 	}
 }

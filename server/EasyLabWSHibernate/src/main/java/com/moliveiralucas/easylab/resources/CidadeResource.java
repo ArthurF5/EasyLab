@@ -1,6 +1,7 @@
 package com.moliveiralucas.easylab.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +20,13 @@ import com.moliveiralucas.easylab.services.CidadeService;
 public class CidadeResource {
 	@Autowired
 	private CidadeService service;
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Cidade> find (@PathVariable Integer id){
+	public ResponseEntity<Cidade> find(@PathVariable Integer id) {
 		Cidade obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Cidade obj) {
 		obj = service.insert(obj);
@@ -33,17 +34,23 @@ public class CidadeResource {
 				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Cidade obj, @PathVariable Integer id){
+	public ResponseEntity<Void> update(@RequestBody Cidade obj, @PathVariable Integer id) {
 		obj.setId_Cidade(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Cidade> delete (@PathVariable Integer id){
+	public ResponseEntity<Cidade> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<Cidade>> findAll() {
+		List<Cidade> list = service.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 }

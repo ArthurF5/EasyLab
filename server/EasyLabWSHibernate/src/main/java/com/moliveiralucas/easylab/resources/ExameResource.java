@@ -1,6 +1,7 @@
 package com.moliveiralucas.easylab.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,5 +46,11 @@ public class ExameResource {
 	public ResponseEntity<Exame> delete (@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<Exame>> findAll() {
+		List<Exame> list = service.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 }
