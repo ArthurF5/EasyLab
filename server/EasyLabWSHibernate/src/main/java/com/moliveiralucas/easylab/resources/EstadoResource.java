@@ -63,7 +63,7 @@ public class EstadoResource {
 	public ResponseEntity<Page<EstadoDTO>> findPage(
 			@RequestParam(value = "page", defaultValue = "0") Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage, 
-			@RequestParam(value = "orderBy", defaultValue = "convenio") String orderBy, 
+			@RequestParam(value = "orderBy", defaultValue = "estado") String orderBy, 
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction) {
 		Page<Estado> pages = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<EstadoDTO> pagesDto = pages.map(obj -> new EstadoDTO(obj));

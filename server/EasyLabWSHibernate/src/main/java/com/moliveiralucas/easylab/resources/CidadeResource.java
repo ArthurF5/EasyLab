@@ -63,7 +63,7 @@ public class CidadeResource {
 	public ResponseEntity<Page<CidadeDTO>> findPage(
 			@RequestParam(value = "page", defaultValue = "0") Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage, 
-			@RequestParam(value = "orderBy", defaultValue = "convenio") String orderBy, 
+			@RequestParam(value = "orderBy", defaultValue = "cidade") String orderBy, 
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction) {
 		Page<Cidade> pages = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<CidadeDTO> pagesDto = pages.map(obj -> new CidadeDTO(obj));

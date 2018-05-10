@@ -63,7 +63,7 @@ public class PermissaoResource {
 	public ResponseEntity<Page<PermissaoDTO>> findPage(
 			@RequestParam(value = "page", defaultValue = "0") Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage, 
-			@RequestParam(value = "orderBy", defaultValue = "convenio") String orderBy, 
+			@RequestParam(value = "orderBy", defaultValue = "permissao") String orderBy, 
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction) {
 		Page<Permissao> pages = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<PermissaoDTO> pagesDto = pages.map(obj -> new PermissaoDTO(obj));

@@ -63,7 +63,7 @@ public class LaboratorioResource {
 	public ResponseEntity<Page<LaboratorioDTO>> findPage(
 			@RequestParam(value = "page", defaultValue = "0") Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage, 
-			@RequestParam(value = "orderBy", defaultValue = "convenio") String orderBy, 
+			@RequestParam(value = "orderBy", defaultValue = "Laboratorio") String orderBy, 
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction) {
 		Page<Laboratorio> pages = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<LaboratorioDTO> pagesDto = pages.map(obj -> new LaboratorioDTO(obj));
