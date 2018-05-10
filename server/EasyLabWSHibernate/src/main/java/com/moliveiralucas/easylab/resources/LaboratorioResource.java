@@ -21,8 +21,8 @@ public class LaboratorioResource {
 	private LaboratorioService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find (@PathVariable Integer id){
-		Laboratorio obj = service.buscar(id);
+	public ResponseEntity<Laboratorio> find (@PathVariable Integer id){
+		Laboratorio obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

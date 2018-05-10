@@ -14,7 +14,7 @@ public class ConvenioService {
 	@Autowired
 	private ConvenioRepository repository;
 
-	public Convenio buscar(Integer id) {
+	public Convenio find(Integer id) {
 		Optional<Convenio> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ Convenio.class.getName()));
@@ -22,6 +22,11 @@ public class ConvenioService {
 
 	public Convenio insert(Convenio obj) {
 		obj.setId_Convenio(null);
+		return repository.save(obj);
+	}
+
+	public Convenio update(Convenio obj) {
+		find(obj.getId_Convenio());
 		return repository.save(obj);
 	}
 }

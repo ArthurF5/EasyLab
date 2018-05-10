@@ -14,7 +14,7 @@ public class ExameUnidadeService {
 	@Autowired
 	private ExameUnidadeRepository repository;
 
-	public ExameUnidade buscar(Integer id) {
+	public ExameUnidade find(Integer id) {
 		Optional<ExameUnidade> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ ExameUnidade.class.getName()));

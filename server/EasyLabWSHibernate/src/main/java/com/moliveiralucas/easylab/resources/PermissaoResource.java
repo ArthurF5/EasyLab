@@ -21,8 +21,8 @@ public class PermissaoResource {
 	private PermissaoService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find (@PathVariable Integer id){
-		Permissao obj = service.buscar(id);
+	public ResponseEntity<Permissao> find (@PathVariable Integer id){
+		Permissao obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

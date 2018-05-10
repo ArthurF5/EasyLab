@@ -14,7 +14,7 @@ public class UnidadeLaboratorioService {
 	@Autowired
 	private UnidadeLaboratorioRepository repository;
 
-	public UnidadeLaboratorio buscar(Integer id) {
+	public UnidadeLaboratorio find(Integer id) {
 		Optional<UnidadeLaboratorio> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ UnidadeLaboratorio.class.getName()));

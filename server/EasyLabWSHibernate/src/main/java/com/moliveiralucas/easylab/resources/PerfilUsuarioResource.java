@@ -21,8 +21,8 @@ public class PerfilUsuarioResource {
 	private PerfilUsuarioService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find (@PathVariable Integer id){
-		PerfilUsuario obj = service.buscar(id);
+	public ResponseEntity<PerfilUsuario> find (@PathVariable Integer id){
+		PerfilUsuario obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

@@ -14,7 +14,7 @@ public class LaboratorioService {
 	@Autowired
 	private LaboratorioRepository repository;
 
-	public Laboratorio buscar(Integer id) {
+	public Laboratorio find(Integer id) {
 		Optional<Laboratorio> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ Laboratorio.class.getName()));

@@ -21,8 +21,8 @@ public class UnidadeLaboratorioResource {
 	private UnidadeLaboratorioService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find (@PathVariable Integer id){
-		UnidadeLaboratorio obj = service.buscar(id);
+	public ResponseEntity<UnidadeLaboratorio> find (@PathVariable Integer id){
+		UnidadeLaboratorio obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

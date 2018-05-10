@@ -21,8 +21,8 @@ public class ExameUnidadeResource {
 	private ExameUnidadeService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find (@PathVariable Integer id){
-		ExameUnidade obj = service.buscar(id);
+	public ResponseEntity<ExameUnidade> find (@PathVariable Integer id){
+		ExameUnidade obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

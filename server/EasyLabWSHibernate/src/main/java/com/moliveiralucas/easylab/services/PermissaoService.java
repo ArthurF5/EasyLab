@@ -14,7 +14,7 @@ public class PermissaoService {
 	@Autowired
 	private PermissaoRepository repository;
 
-	public Permissao buscar(Integer id) {
+	public Permissao find(Integer id) {
 		Optional<Permissao> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ Permissao.class.getName()));

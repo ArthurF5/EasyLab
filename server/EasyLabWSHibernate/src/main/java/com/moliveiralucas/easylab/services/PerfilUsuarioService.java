@@ -14,7 +14,7 @@ public class PerfilUsuarioService {
 	@Autowired
 	private PerfilUsuarioRepository repository;
 
-	public PerfilUsuario buscar(Integer id) {
+	public PerfilUsuario find(Integer id) {
 		Optional<PerfilUsuario> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: "+ PerfilUsuario.class.getName()));
