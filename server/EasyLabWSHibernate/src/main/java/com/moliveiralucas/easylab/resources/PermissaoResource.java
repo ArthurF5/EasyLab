@@ -19,18 +19,25 @@ import com.moliveiralucas.easylab.services.PermissaoService;
 public class PermissaoResource {
 	@Autowired
 	private PermissaoService service;
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Permissao> find (@PathVariable Integer id){
+	public ResponseEntity<Permissao> find(@PathVariable Integer id) {
 		Permissao obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Permissao obj) {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId_Permissao())
 				.toUri();
 		return ResponseEntity.created(uri).build();
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Permissao obj, @PathVariable Integer id) {
+		obj.setId_Permissao(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
 	}
 }

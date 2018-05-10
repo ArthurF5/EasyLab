@@ -24,4 +24,8 @@ public class LaboratorioService {
 		obj.setId_Laboratorio(null);
 		return repository.save(obj);
 	}
+
+	public Laboratorio update(Laboratorio obj) {
+		return repository.save(obj);
+	}
 }

@@ -24,4 +24,8 @@ public class CidadeService {
 		obj.setId_Cidade(null);
 		return repository.save(obj);
 	}
+
+	public Cidade update(Cidade obj) {
+		return repository.save(obj);
+	}
 }

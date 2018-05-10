@@ -24,4 +24,8 @@ public class PermissaoService {
 		obj.setId_Permissao(null);
 		return repository.save(obj);
 	}
+
+	public Permissao update(Permissao obj) {
+		return repository.save(obj);
+	}
 }

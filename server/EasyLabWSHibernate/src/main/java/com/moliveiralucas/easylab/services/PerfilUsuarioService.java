@@ -24,4 +24,8 @@ public class PerfilUsuarioService {
 		obj.setId_PerfilUsuario(null);
 		return repository.save(obj);
 	}
+
+	public PerfilUsuario update(PerfilUsuario obj) {
+		return repository.save(obj);
+	}
 }

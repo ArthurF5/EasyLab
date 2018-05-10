@@ -24,4 +24,8 @@ public class ExameUnidadeService {
 		obj.setId_ExameUnidade(null);
 		return repository.save(obj);
 	}
+
+	public ExameUnidade update(ExameUnidade obj) {
+		return repository.save(obj);
+	}
 }

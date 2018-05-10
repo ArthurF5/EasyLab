@@ -33,4 +33,11 @@ public class CidadeResource {
 				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Cidade obj, @PathVariable Integer id){
+		obj.setId_Cidade(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
+	}
 }

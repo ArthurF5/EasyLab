@@ -26,7 +26,6 @@ public class ConvenioService {
 	}
 
 	public Convenio update(Convenio obj) {
-		find(obj.getId_Convenio());
 		return repository.save(obj);
 	}
 }

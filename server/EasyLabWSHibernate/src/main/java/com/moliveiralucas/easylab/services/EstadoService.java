@@ -25,4 +25,8 @@ public class EstadoService {
 		obj.setId_Estado(null);
 		return repository.save(obj);
 	}
+
+	public Estado update(Estado obj) {
+		return repository.save(obj);
+	}
 }

@@ -33,4 +33,11 @@ public class UsuarioResource {
 				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Usuario obj, @PathVariable Integer id){
+		obj.setId_Usuario(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
+	}
 }

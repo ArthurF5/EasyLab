@@ -33,4 +33,11 @@ public class ExameResource {
 				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Exame obj, @PathVariable Integer id){
+		obj.setId_Exame(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
+	}
 }

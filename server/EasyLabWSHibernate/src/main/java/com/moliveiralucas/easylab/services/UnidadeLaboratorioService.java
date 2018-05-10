@@ -24,4 +24,8 @@ public class UnidadeLaboratorioService {
 		obj.setId_UnidadeLaboratorio(null);
 		return repository.save(obj);
 	}
+
+	public UnidadeLaboratorio update(UnidadeLaboratorio obj) {
+		return repository.save(obj);
+	}
 }
