@@ -27,7 +27,7 @@ public class CidadeDTO implements Serializable {
 	public CidadeDTO(Cidade obj) {
 		id_Cidade = obj.getId_Cidade();
 		cidade = obj.getCidade();
-		estado = obj.getEstado();
+		estado = obj.getEstados();
 	}
 
 	public Integer getId_Cidade() {

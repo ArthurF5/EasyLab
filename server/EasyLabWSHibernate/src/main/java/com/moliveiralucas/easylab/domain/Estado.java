@@ -30,7 +30,7 @@ public class Estado implements Serializable {
 	/* RELACIONAMENTOS */
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "estado")
+	@OneToMany(mappedBy = "estados")
 	private List<Cidade> cidades = new ArrayList<>();
 
 	/* CONSTRUTORES */

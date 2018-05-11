@@ -27,18 +27,18 @@ public class Cidade implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_Estado", referencedColumnName = "id_Estado", nullable = false)
-	private Estado estado;
+	private Estado estados;
 
 	/* CONSTRUTORES */
 
 	public Cidade() {
 	}
 
-	public Cidade(Integer id_Cidade, String cidade, Estado estado) {
+	public Cidade(Integer id_Cidade, String cidade, Estado estados) {
 		super();
 		this.id_Cidade = id_Cidade;
 		this.cidade = cidade;
-		this.estado = estado;
+		this.estados = estados;
 	}
 
 	/* GETTERS AND SETTERS */
@@ -59,12 +59,12 @@ public class Cidade implements Serializable {
 		this.cidade = cidade;
 	}
 
-	public Estado getEstado() {
-		return estado;
+	public Estado getEstados() {
+		return estados;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setEstados(Estado estados) {
+		this.estados = estados;
 	}
 
 	/* HASCOD AND EQUALS */
