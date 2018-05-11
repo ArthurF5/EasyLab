@@ -34,6 +34,8 @@ public class EstadoService {
 	}
 
 	public Estado update(Estado obj) {
+		Estado newObj = find(obj.getId_Estado());
+		updateData(newObj, obj);
 		return repository.save(obj);
 	}
 	
@@ -56,5 +58,9 @@ public class EstadoService {
 		
 	public Estado fromDTO(EstadoDTO objDto) {
 		return new Estado(objDto.getId_Estado(), objDto.getEstado(), objDto.getUf());
+	}
+	
+	private void updateData(Estado newObj, Estado obj) {
+		newObj.setEstado(obj.getEstado());
 	}
 }

@@ -33,6 +33,8 @@ public class ConvenioService {
 	}
 
 	public Convenio update(Convenio obj) {
+		Convenio newObj = find(obj.getId_Convenio());
+		updateData(newObj, obj);
 		return repository.save(obj);
 	}
 
@@ -55,5 +57,9 @@ public class ConvenioService {
 	
 	public Convenio fromDTO(ConvenioDTO objDto) {
 		return new Convenio(objDto.getId_Convenio(), objDto.getConvenio());
+	}
+	
+	private void updateData(Convenio newObj, Convenio obj) {
+		newObj.setConvenio(obj.getConvenio());
 	}
 }

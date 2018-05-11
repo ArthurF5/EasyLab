@@ -1,5 +1,6 @@
 package com.moliveiralucas.easylab;
 //
+
 //import java.util.Arrays;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //
 //@SpringBootApplication
 //public class EasyLabApplication implements CommandLineRunner{
-	
+
 //	@Autowired
 //	private CidadeRepository cidadeRepository;
 //	@Autowired
 //	private EstadoRepository estadoRepository;
-	
+
 //	public static void main(String[] args) {
 //		SpringApplication.run(EasyLabApplication.class, args);
 //		
@@ -45,9 +46,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //}
 
 @SpringBootApplication
-public class EasyLabApplication{
+public class EasyLabApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EasyLabApplication.class, args);
-		
 	}
 }

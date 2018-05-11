@@ -33,6 +33,8 @@ public class UsuarioService {
 	}
 
 	public Usuario update(Usuario obj) {
+		Usuario newObj = find(obj.getId_Usuario());
+		updateData(newObj, obj);
 		return repository.save(obj);
 	}
 	
@@ -55,5 +57,10 @@ public class UsuarioService {
 	
 	public Usuario fromDTO(UsuarioDTO objDto) {
 		return new Usuario(objDto.getId_Usuario(), objDto.getUsuario(), objDto.getSenha(), objDto.getEmail());
+	}
+	
+	private void updateData(Usuario newObj, Usuario obj) {
+		newObj.setEmail(obj.getEmail());
+		newObj.setSenha(obj.getSenha());
 	}
 }

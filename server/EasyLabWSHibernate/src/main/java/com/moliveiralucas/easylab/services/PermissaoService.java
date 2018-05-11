@@ -33,6 +33,8 @@ public class PermissaoService {
 	}
 
 	public Permissao update(Permissao obj) {
+		Permissao newObj = find(obj.getId_Permissao());
+		updateData(newObj, obj);
 		return repository.save(obj);
 	}
 	
@@ -55,5 +57,9 @@ public class PermissaoService {
 		
 	public Permissao fromDTO(PermissaoDTO objDto) {
 		return new Permissao(objDto.getId_Permissao(), objDto.getPermissao());
+	}
+	
+	private void updateData(Permissao newObj, Permissao obj) {
+		newObj.setPermissao(obj.getPermissao());
 	}
 }

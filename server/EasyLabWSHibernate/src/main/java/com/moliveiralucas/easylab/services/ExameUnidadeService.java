@@ -33,6 +33,8 @@ public class ExameUnidadeService {
 	}
 
 	public ExameUnidade update(ExameUnidade obj) {
+		ExameUnidade newObj = find(obj.getId_ExameUnidade());
+		updateData(newObj, obj);
 		return repository.save(obj);
 	}
 	
@@ -55,5 +57,11 @@ public class ExameUnidadeService {
 		
 	public ExameUnidade fromDTO(ExameUnidadeDTO objDto) {
 		return new ExameUnidade(objDto.getId_ExameUnidade(), objDto.getValor(), objDto.getConvenio(), objDto.getExame());
+	}
+	
+	private void updateData(ExameUnidade newObj, ExameUnidade obj) {
+		newObj.setConvenio(obj.getConvenio());
+		newObj.setExame(obj.getExame());
+		newObj.setValor(obj.getValor());
 	}
 }

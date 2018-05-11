@@ -24,7 +24,7 @@ public class CidadeService {
 	public Cidade find(Integer id) {
 		Optional<Cidade> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Objeto não encontrado! ID: " + id + ", Tipo: "+ Cidade.class.getName()));
+				"Objeto não encontrado! ID: " + id + ", Tipo: " + Cidade.class.getName()));
 	}
 
 	public Cidade insert(Cidade obj) {
@@ -33,6 +33,8 @@ public class CidadeService {
 	}
 
 	public Cidade update(Cidade obj) {
+		Cidade newObj = find(obj.getId_Cidade());
+		updateData(newObj, obj);
 		return repository.save(obj);
 	}
 
@@ -47,13 +49,17 @@ public class CidadeService {
 	public List<Cidade> findAll() {
 		return repository.findAll();
 	}
-	
+
 	public Page<Cidade> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repository.findAll(pageRequest);
 	}
-		
+
 	public Cidade fromDTO(CidadeDTO objDto) {
 		return new Cidade(objDto.getId_Cidade(), objDto.getCidade(), objDto.getEstado());
+	}
+
+	private void updateData(Cidade newObj, Cidade obj) {
+		newObj.setCidade(obj.getCidade());
 	}
 }

@@ -33,6 +33,8 @@ public class PerfilUsuarioService {
 	}
 
 	public PerfilUsuario update(PerfilUsuario obj) {
+		PerfilUsuario newObj = find(obj.getId_PerfilUsuario());
+		updateData(newObj, obj);
 		return repository.save(obj);
 	}
 	
@@ -55,5 +57,9 @@ public class PerfilUsuarioService {
 		
 	public PerfilUsuario fromDTO(PerfilUsuarioDTO objDto) {
 		return new PerfilUsuario(objDto.getId_PerfilUsuario(), objDto.getPerfilUsuario());
+	}
+	
+	private void updateData(PerfilUsuario newObj, PerfilUsuario obj) {
+		newObj.setPerfilUsuario(obj.getPerfilUsuario());
 	}
 }

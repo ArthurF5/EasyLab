@@ -33,6 +33,8 @@ public class LaboratorioService {
 	}
 
 	public Laboratorio update(Laboratorio obj) {
+		Laboratorio newObj = find(obj.getId_Laboratorio());
+		updateData(newObj, obj);
 		return repository.save(obj);
 	}
 	
@@ -55,5 +57,9 @@ public class LaboratorioService {
 		
 	public Laboratorio fromDTO(LaboratorioDTO objDto) {
 		return new Laboratorio(objDto.getId_Laboratorio(), objDto.getLaboratorio());
+	}
+	
+	private void updateData(Laboratorio newObj, Laboratorio obj) {
+		newObj.setLaboratorio(obj.getLaboratorio());
 	}
 }

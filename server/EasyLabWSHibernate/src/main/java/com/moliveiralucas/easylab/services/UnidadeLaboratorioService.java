@@ -33,6 +33,8 @@ public class UnidadeLaboratorioService {
 	}
 
 	public UnidadeLaboratorio update(UnidadeLaboratorio obj) {
+		UnidadeLaboratorio newObj = find(obj.getId_UnidadeLaboratorio());
+		updateData(newObj, obj);
 		return repository.save(obj);
 	}
 	
@@ -55,5 +57,12 @@ public class UnidadeLaboratorioService {
 		
 	public UnidadeLaboratorio fromDTO(UnidadeLaboratorioDTO objDto) {
 		return new UnidadeLaboratorio(objDto.getId_UnidadeLaboratorio(), objDto.getNomeUnidade(), objDto.getLogradouro(), objDto.getComplemento(), objDto.getNumero(), objDto.getCidade(), objDto.getLaboratorio());
+	}
+	
+	private void updateData(UnidadeLaboratorio newObj,UnidadeLaboratorio obj) {
+		newObj.setNomeUnidade(obj.getNomeUnidade());
+		newObj.setLogradouro(obj.getLogradouro());
+		newObj.setComplemento(obj.getComplemento());
+		newObj.setNumero(obj.getNumero());
 	}
 }
